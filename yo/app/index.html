@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>yo</title>
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!--<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
     <!-- Place favicon.ico in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -15,7 +15,8 @@
     <!-- endbuild -->
 
     <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!--<link rel="stylesheet" href="styles/main.css">-->
+    <link rel="stylesheet" href="styles/cochrane.css">
     <!-- endbuild -->
     
   </head>
@@ -25,37 +26,62 @@
     <![endif]-->
     
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">yo</h3>
-      </div>
+<table border="1" cellspacing="0" cellpadding="10" width="750" bordercolor="#003366" align="center">
+<tbody><tr><td>
+<table width="200" border="0" align="left" cellpadding="3">
+        <tbody><tr>
+          <td bgcolor="#EAEEF7" width="100" height="2"> <div align="center"><a href="http://www.jameslindlibrary.org/index.html" class="menubar">Home</a></div></td>
+          <td bgcolor="#EAEEF7" height="2" width="100"> <div align="center"><a href="http://www.jameslindlibrary.org/contents.php" class="menubar">Contents</a></div></td>
+        </tr>
+        <tr bgcolor="#EAEEF7">
+          <td colspan="2" class="nav"> <div align="center"><b><strong style="color: #003366">jameslindlibrary.org</strong></b></div></td>
+        </tr>
+      </tbody></table>
+  <table border="0">    <tbody><tr>      <td width="80">&nbsp;</td>      <td>        <h3 align="right">Allocating sufficiently large numbers of patients at random
+  to create similar treatment comparison groups</h3>
+      </td>      <td><img src="./images/jll_logo.jpg" width="113" height="153"></td>    </tr>  </tbody></table><h4>Comparing like with like</h4>
+<p>Random allocation of patients to treatment comparison groups is one of the 
+  ways to ensure that tests of treatments are fair. Although random allocation can never
+  ensure that treatment comparison groups are exactly comparable in all respects,
+  it ensures that the composition of the comparison groups has not been biased by
+  clinician or patient choices. Unless allocation bias is reduced in this way, any
+  differences in the progress of patients in the comparison groups may simply
+  reflect the fact that they were composed of patients who were different to begin
+  with, and nothing to do with relative effects of different treatments.
+</p><h4>Recorded, known patient characteristics</h4>
+<p>Patients in the treatment comparison groups that have been generated using
+  random allocation need to be sufficiently alike in characteristics (age, for
+  example) which are known to influence their health problems. Reports of
+  treatment comparisons, therefore, need to show that 'like patients' have been
+  compared with 'other like patients'.
+</p><h4>Unrecorded and, as yet, undiscovered patient characteristics</h4>
+ <p>Patients in treatment comparison groups who differ in respect of unrecorded and
+  as yet undiscovered characteristics of importance obviously cannot be shown to
+  be comparable. However, because random allocation ensures that any
+  unrecorded differences have been due to chance, these differences can be taken
+  into account in statistical analyses, usually by calculating confidence intervals.</p>
+<h4>Achieving balance in important patient characteristics</h4>
+<p>The larger the number of patients allocated at random to treatment comparison
+  groups, the more likely it is that the comparison groups will be made up of
+  patients with comparable characteristics, and the less likely that large imbalances
+  will remain. You can see this effect of increasing the numbers of patients using
+  the random allocation program below. Ask the program to randomise successively
+  larger numbers of patients (up to 100,000) and watch the way that the
+  characteristics of the patients in the treatment comparison groups become
+  increasingly balanced.</p>
 
-      <div class="jumbotron">
-        <h1>'Allo, 'Allo!</h1>
-        <p class="lead">Always a pleasure scaffolding your apps.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
-      </div>
 
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>HTML5 Boilerplate</h4>
-          <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-          
-          <h4>Sass</h4>
-          <p>Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.</p>
-          
-          <h4>Bootstrap</h4>
-          <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-        </div>
-      </div>
-
-      <div class="footer">
-        <p>♥ from the Yeoman team</p>
-      </div>
+<form method="post" action=".">
+  <input type="text" name="nrandrec" value="" size="6" maxlength="6">
+  <span>Enter the number of patients to be randomised, and hit the Go button....</span>
+  <input type="hidden" name="ftype" value="1">
+  <input type="hidden" name="power" value="0">
+  <input type="submit" name="Submit" value="Go">
+</form>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+</td></tr></tbody></table>
+      
     </div>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
