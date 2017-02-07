@@ -98,6 +98,39 @@ function showPage(id) {
 function begin() {
     nrand = 0;
     stage = "intro";
+    alert('begin!');
+}
+
+// 10 times bigger values are hidden using "visibility: hidden" which preserves the onscreen space for an element
+// as opposed to "display: none" which causes the element not to be present at all, which could break the layout
+// jQuery hide() and show() change "display", but there is no equivalent for "visibility"
+// so here is a jQuery plugin
+(function($) { // set visibility with visible() or invisible()
+    $.fn.invisible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "hidden");
+        });
+    };
+    $.fn.visible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "visible");
+        });
+    };
+}(jQuery));
+
+function show6() { $(".cond").visible(); }
+function show5() { $(".age").visible(); setTimeout(show6, 1000); }
+function show4() { $(".sev").visible(); setTimeout(show5, 1000); }
+function show3() { $(".duration").visible(); setTimeout(show4, 1000); }
+function show2() { $(".heading").visible(); setTimeout(show3, 1000); }
+function show1() { setTimeout(show2, 1000); }
+
+function hideNext() {
+    $("#cond").invisible();
+    $("#age").invisible();
+    $("#sev").invisible();
+    $("#duration").invisible();
+    $(".heading").invisible();
 }
 
 function simplerand() { // Takes in nrand, iform & propx?
@@ -109,8 +142,11 @@ function simplerand() { // Takes in nrand, iform & propx?
             return;
         } else {
             nrand = enteredNumber;
+            hideNext(); // make sure "10 times bigger" values are hidden to begin with
             $('#intro').hide();
             $('#results').show();
+            calcResults();
+            show1();
         }
     }
     console.log(factors); //alert(factors); // doesn't print whole object
@@ -204,6 +240,105 @@ function simplerand() { // Takes in nrand, iform & propx?
 // make a function to do all this...
 function toPercent(nrandx, factor, percentage) {
     percentage = Math.round(100 * factor / nrandx);
+}
+
+function calcResults() {
+    var a = 0; 
+    $('#nrand').html(++a);
+    $('#treatA').html(++a);
+    $('#treatB').html(++a);
+    $('#totalA').html(++a);
+    $('#totalANext').html(++a);
+    $('#totalB').html(++a);
+    $('#totalBNext').html(++a);
+    $('#t1f1s1').html(++a);
+    $('#t1f1s1pc').html(++a);
+    $('#t1f1s1next').html(++a);
+    $('#t1f1s1nextpc').html(++a);
+    $('#t2f1s1').html(++a);
+    $('#t2f1s1pc').html(++a);
+    $('#t2f1s1next').html(++a);
+    $('#t2f1s1nextpc').html(++a);
+    $('#t1f1s2').html(++a);
+    $('#t1f1s2pc').html(++a);
+    $('#t1f1s2next').html(++a);
+    $('#t1f1s2nextpc').html(++a);
+    $('#t2f1s2').html(++a);
+    $('#t2f1s2pc').html(++a);
+    $('#t2f1s2next').html(++a);
+    $('#t2f1s2nextpc').html(++a);
+    $('#t1f2s1').html(++a);
+    $('#t1f2s1pc').html(++a);
+    $('#t1f2s1next').html(++a);
+    $('#t1f2s1nextpc').html(++a);
+    $('#t2f2s1').html(++a);
+    $('#t2f2s1pc').html(++a);
+    $('#t2f2s1next').html(++a);
+    $('#t2f2s1nextpc').html(++a);
+    $('#t1f2s2').html(++a);
+    $('#t1f2s2pc').html(++a);
+    $('#t1f2s2next').html(++a);
+    $('#t1f2s2nextpc').html(++a);
+    $('#t2f2s2').html(++a);
+    $('#t2f2s2pc').html(++a);
+    $('#t2f2s2next').html(++a);
+    $('#t2f2s2nextpc').html(++a);
+    $('#t1f2s3').html(++a);
+    $('#t1f2s3pc').html(++a);
+    $('#t1f2s3next').html(++a);
+    $('#t1f2s3nextpc').html(++a);
+    $('#t2f2s3').html(++a);
+    $('#t2f2s3pc').html(++a);
+    $('#t2f2s3next').html(++a);
+    $('#t2f2s3nextpc').html(++a);
+    $('#t1f3s1').html(++a);
+    $('#t1f3s1pc').html(++a);
+    $('#t1f3s1next').html(++a);
+    $('#t1f3s1nextpc').html(++a);
+    $('#t2f3s1').html(++a);
+    $('#t2f3s1pc').html(++a);
+    $('#t2f3s1next').html(++a);
+    $('#t2f3s1nextpc').html(++a);
+    $('#t1f3s2').html(++a);
+    $('#t1f3s2pc').html(++a);
+    $('#t1f3s2next').html(++a);
+    $('#t1f3s2nextpc').html(++a);
+    $('#t2f3s2').html(++a);
+    $('#t2f3s2pc').html(++a);
+    $('#t2f3s2next').html(++a);
+    $('#t2f3s2nextpc').html(++a);
+    $('#t1f3s3').html(++a);
+    $('#t1f3s3pc').html(++a);
+    $('#t1f3s3next').html(++a);
+    $('#t1f3s3nextpc').html(++a);
+    $('#t2f3s3').html(++a);
+    $('#t2f3s3pc').html(++a);
+    $('#t2f3s3next').html(++a);
+    $('#t2f3s3nextpc').html(++a);
+    $('#t1f3s4').html(++a);
+    $('#t1f3s4pc').html(++a);
+    $('#t1f3s4next').html(++a);
+    $('#t1f3s4nextpc').html(++a);
+    $('#t2f3s4').html(++a);
+    $('#t2f3s4pc').html(++a);
+    $('#t2f3s4next').html(++a);
+    $('#t2f3s4nextpc').html(++a);
+    $('#t1f4s1').html(++a);
+    $('#t1f4s1pc').html(++a);
+    $('#t1f4s1next').html(++a);
+    $('#t1f4s1nextpc').html(++a);
+    $('#t2f4s1').html(++a);
+    $('#t2f4s1').html(++a);
+    $('#t2f4s1next').html(++a);
+    $('#t2f4s1nextpc').html(++a);
+    $('#t1f4s2').html(++a);
+    $('#t1f4s2pc').html(++a);
+    $('#t1f4s2next').html(++a);
+    $('#t1f4s2nextpc').html(++a);
+    $('#t2f4s2').html(++a);
+    $('#t2f4s2pc').html(++a);
+    $('#t2f4s2next').html(++a);
+    $('#t2f4s2nextpc').html(++a);
 }
 
 if (nranda === 0) {
@@ -416,9 +551,3 @@ function Show6() { Show("cond"); }
 // 	// }
 // }
 
-function show1() { setTimeout(show2, 1000); }
-function show2() { $("#heading").show(); setTimeout(show3, 1000); }
-function show3() { $("#duration").show(); setTimeout(show4, 1000); }
-function show4() { $("#sev").show(); setTimeout(show5, 1000); }
-function show5() { $("#age").show(); setTimeout(show6, 1000); }
-function show6() { $("#cond").show(); }
