@@ -2,118 +2,605 @@
 <html lang="">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>yo</title>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yo</title>
 
-    <!--<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
-    <!-- Place favicon.ico in the root directory -->
+  <!--<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+  <!-- Place favicon.ico in the root directory -->
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
 
-    <!-- build:css styles/main.css -->
-    <!--<link rel="stylesheet" href="styles/main.css">-->
-    <link rel="stylesheet" href="styles/cochrane.css">
-    <!-- endbuild -->
+  <!-- build:css styles/main.css -->
+  <!--<link rel="stylesheet" href="styles/main.css">-->
+  <link rel="stylesheet" href="styles/cochrane.css">
+  <!-- endbuild -->
 
 </head>
 
 <body>
-    <!--[if lt IE 10]>
+  <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="container">
+  <div class="container">
+    <div id="pages">
+      <div id="intro" class="page">
         <table border="1" cellspacing="0" cellpadding="10" width="750" bordercolor="#003366" align="center">
-            <tbody>
-                <tr>
-                    <td>
-                        <table width="200" border="0" align="left" cellpadding="3">
-                            <tbody>
-                                <tr>
-                                    <td bgcolor="#EAEEF7" width="100" height="2">
-                                        <div align="center"><a href="http://www.jameslindlibrary.org/index.html" class="menubar">Home</a></div>
-                                    </td>
-                                    <td bgcolor="#EAEEF7" height="2" width="100">
-                                        <div align="center"><a href="http://www.jameslindlibrary.org/contents.php" class="menubar">Contents</a></div>
-                                    </td>
-                                </tr>
-                                <tr bgcolor="#EAEEF7">
-                                    <td colspan="2" class="nav">
-                                        <div align="center"><b><strong style="color: #003366">jameslindlibrary.org</strong></b></div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table border="0">
-                            <tbody>
-                                <tr>
-                                    <td width="80">&nbsp;</td>
-                                    <td>
-                                        <h3 align="right">Allocating sufficiently large numbers of patients at random to create similar treatment comparison groups</h3>
-                                    </td>
-                                    <td><img src="./images/jll_logo.jpg" width="113" height="153"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <h4>Comparing like with like</h4>
-                        <p>Random allocation of patients to treatment comparison groups is one of the ways to ensure that tests of treatments are fair. Although random allocation can never ensure that treatment comparison groups are exactly comparable in
-                            all respects, it ensures that the composition of the comparison groups has not been biased by clinician or patient choices. Unless allocation bias is reduced in this way, any differences in the progress of patients in the comparison
-                            groups may simply reflect the fact that they were composed of patients who were different to begin with, and nothing to do with relative effects of different treatments.
-                        </p>
-                        <h4>Recorded, known patient characteristics</h4>
-                        <p>Patients in the treatment comparison groups that have been generated using random allocation need to be sufficiently alike in characteristics (age, for example) which are known to influence their health problems. Reports of treatment
-                            comparisons, therefore, need to show that 'like patients' have been compared with 'other like patients'.
-                        </p>
-                        <h4>Unrecorded and, as yet, undiscovered patient characteristics</h4>
-                        <p>Patients in treatment comparison groups who differ in respect of unrecorded and as yet undiscovered characteristics of importance obviously cannot be shown to be comparable. However, because random allocation ensures that any unrecorded
-                            differences have been due to chance, these differences can be taken into account in statistical analyses, usually by calculating confidence intervals.</p>
-                        <h4>Achieving balance in important patient characteristics</h4>
-                        <p>The larger the number of patients allocated at random to treatment comparison groups, the more likely it is that the comparison groups will be made up of patients with comparable characteristics, and the less likely that large
-                            imbalances will remain. You can see this effect of increasing the numbers of patients using the random allocation program below. Ask the program to randomise successively larger numbers of patients (up to 100,000) and watch
-                            the way that the characteristics of the patients in the treatment comparison groups become increasingly balanced.</p>
-                        <form method="post" action=".">
-                            <input type="text" name="nrandrec" value="" size="6" maxlength="6">
-                            <span>Enter the number of patients to be randomised, and hit the Go button....</span>
-                            <input type="hidden" name="ftype" value="1">
+          <tbody>
+            <tr>
+              <td>
+                <table width="200" border="0" align="left" cellpadding="3">
+                  <tbody>
+                    <tr>
+                      <td bgcolor="#EAEEF7" width="100" height="2">
+                        <div align="center"><a href="http://www.jameslindlibrary.org/index.html" class="menubar">Home</a></div>
+                      </td>
+                      <td bgcolor="#EAEEF7" height="2" width="100">
+                        <div align="center"><a href="http://www.jameslindlibrary.org/contents.php" class="menubar">Contents</a></div>
+                      </td>
+                    </tr>
+                    <tr bgcolor="#EAEEF7">
+                      <td colspan="2" class="nav">
+                        <div align="center"><b><strong style="color: #003366">jameslindlibrary.org</strong></b></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table border="0">
+                  <tbody>
+                    <tr>
+                      <td width="80">&nbsp;</td>
+                      <td>
+                        <h3 align="right">Allocating sufficiently large numbers of patients at random to create similar treatment comparison
+                          groups
+                        </h3>
+                      </td>
+                      <td><img src="./images/jll_logo.jpg" width="113" height="153"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h4>Comparing like with like</h4>
+                <p>Random allocation of patients to treatment comparison groups is one of the ways to ensure that tests of treatments
+                  are fair. Although random allocation can never ensure that treatment comparison groups are exactly comparable
+                  in all respects, it ensures that the composition of the comparison groups has not been biased by clinician
+                  or patient choices. Unless allocation bias is reduced in this way, any differences in the progress of patients
+                  in the comparison groups may simply reflect the fact that they were composed of patients who were different
+                  to begin with, and nothing to do with relative effects of different treatments.
+                </p>
+                <h4>Recorded, known patient characteristics</h4>
+                <p>Patients in the treatment comparison groups that have been generated using random allocation need to be sufficiently
+                  alike in characteristics (age, for example) which are known to influence their health problems. Reports
+                  of treatment comparisons, therefore, need to show that 'like patients' have been compared with 'other like
+                  patients'.
+                </p>
+                <h4>Unrecorded and, as yet, undiscovered patient characteristics</h4>
+                <p>Patients in treatment comparison groups who differ in respect of unrecorded and as yet undiscovered characteristics
+                  of importance obviously cannot be shown to be comparable. However, because random allocation ensures that
+                  any unrecorded differences have been due to chance, these differences can be taken into account in statistical
+                  analyses, usually by calculating confidence intervals.</p>
+                <h4>Achieving balance in important patient characteristics</h4>
+                <p>The larger the number of patients allocated at random to treatment comparison groups, the more likely it
+                  is that the comparison groups will be made up of patients with comparable characteristics, and the less
+                  likely that large imbalances will remain. You can see this effect of increasing the numbers of patients
+                  using the random allocation program below. Ask the program to randomise successively larger numbers of
+                  patients (up to 100,000) and watch the way that the characteristics of the patients in the treatment comparison
+                  groups become increasingly balanced.
+                </p>
+                <!--<form method="post" action=".">-->
+                <input type="text" name="nrandrec" value="" size="6" maxlength="6">
+                <span>Enter the number of patients to be randomised, and hit the Go button....</span>
+                <!--<input type="hidden" name="ftype" value="1">
                             <input type="hidden" name="power" value="0">
-                            <input type="submit" name="Submit" value="Go">
-                        </form>
-                        <p>&nbsp;</p>
-                        <p>&nbsp; </p>
-                    </td>
-                </tr>
-            </tbody>
+                            <input type="submit" name="Submit" value="Go">-->
+                <!--</form>-->
+                <p>&nbsp;</p>
+                <p>&nbsp; </p>
+              </td>
+            </tr>
+          </tbody>
         </table>
-    </div>
+      </div> <!-- intro -->
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+      <div id="results" class="page" style="display:none">
+        <table border="1" cellspacing="0" cellpadding="10" width="750" bordercolor="#003366" align="center">
+          <tbody>
+            <tr>
+              <td>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <table width="200" border="0" align="left" cellpadding="3">
+                          <tbody>
+                            <tr>
+                              <td bgcolor="#EAEEF7" width="100" height="2">
+                                <div align="center"><a href="http://www.jameslindlibrary.org/index.html" class="menubar">Home</a></div>
+                              </td>
+                              <td bgcolor="#EAEEF7" height="2" width="100">
+                                <div align="center"><a href="http://www.jameslindlibrary.org/contents.php" class="menubar">Contents</a></div>
+                              </td>
+                            </tr>
+                            <tr bgcolor="#EAEEF7">
+                              <td colspan="2" class="nav">
+                                <div align="center"><b><font color="#003366">jameslindlibrary.org</font></b></div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table><br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4 align="center">23 patients were randomised,<br> 10 to treatment A, 13 to treatment B:</h4>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table width="80%" align="center" border="0">
+                  <tbody>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right">Treatment A</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="n_trt_a1">&nbsp;</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">Treatment B</td>
+                      <td name="n_trt_b1">&nbsp;</td>
+                      <td>
+                        <div align="right"></div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right">(total = 10)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" id="hideable" name="heading" style="visibility:hidden">
+                        <font color="#0000FF">(total=10)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">(total = 13)</td>
+                      <td name="n_trt_b2">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="heading" style="visibility:hidden">(total=13)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right">number (%)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="n_trt_a3">
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">number (%)</td>
+                      <td name="n_trt_b3">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><b>Duration of health problem</b></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>Long term</td>
+                      <td align="right">1 (10)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" id="hideable" name="duration" style="visibility:hidden">
+                        <font color="#0000FF">1 (10)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">4 (31)</td>
+                      <td name="n_dur_b1">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="duration" style="visibility:hidden">4 (31)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>More recent</td>
+                      <td align="right">9 (90)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="duration" style="visibility:hidden">
+                        <font color="#0000FF">9 (90)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">9 (69)</td>
+                      <td name="n_dur_b2">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="duration" style="visibility:hidden">9 (69)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><b>Severity of health problem</b></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>Mild</td>
+                      <td align="right">1 (10)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="sev" style="visibility:hidden">
+                        <font color="#0000FF">1 (10)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">5 (38)</td>
+                      <td name="n_sev_b1">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="sev" style="visibility:hidden">5 (38)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>Moderate</td>
+                      <td align="right">6 (60)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="sev" style="visibility:hidden">
+                        <font color="#0000FF">6 (60)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">4 (31)</td>
+                      <td name="n_sev_b2">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="sev" style="visibility:hidden">4 (31)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>Severe</td>
+                      <td align="right">3 (30)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="sev" style="visibility:hidden">
+                        <font color="#0000FF">3 (30)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">4 (31)</td>
+                      <td name="n_sev_b3">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="sev" style="visibility:hidden">4 (31)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><b>Age, in years</b></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>Under 15</td>
+                      <td align="right">2 (20)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="age" style="visibility:hidden">
+                        <font color="#0000FF">2 (20)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">4 (31)</td>
+                      <td name="n_age_b1">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="age" style="visibility:hidden">4 (31)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>15-34</td>
+                      <td align="right">2 (20)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="age" style="visibility:hidden">
+                        <font color="#0000FF">2 (20)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">2 (15)</td>
+                      <td name="n_age_b2">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="age" style="visibility:hidden">2 (15)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>35-64</td>
+                      <td align="right">2 (20)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="age" style="visibility:hidden">
+                        <font color="#0000FF">2 (20)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">1 (8)</td>
+                      <td name="n_age_b3">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="age" style="visibility:hidden">1 (8)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>65 &amp; older</td>
+                      <td align="right">4 (40)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="age" style="visibility:hidden">
+                        <font color="#0000FF">4 (40)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">&nbsp;6 (46)</td>
+                      <td name="n_age_b4">&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF" name="age" style="visibility:hidden">6 (46)</font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"><b>Condition: Very anxious?</b></td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <font color="#0000FF"></font>
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <div align="right">
+                          <font color="#0000FF"></font>
+                        </div>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>Yes</td>
+                      <td align="right">0 (0)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="cond" style="visibility:hidden">
+                        <font color="#0000FF">0 (0)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">1 (8)</td>
+                      <td align="right" name="n_cnd_b1">&nbsp;</td>
+                      <td align="right">
+                        <div align="right">
+                          <font color="#0000FF" name="cond" style="visibility:hidden">1 (8)</font>
+                        </div>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>No</td>
+                      <td align="right">10 (100)</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right" name="cond" style="visibility:hidden">
+                        <font color="#0000FF">10 (100)</font>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">12 (92)</td>
+                      <td align="right" name="n_cnd_b2">&nbsp;</td>
+                      <td align="right">
+                        <div align="right">
+                          <font color="#0000FF" name="cond" style="visibility:hidden">12 (92)</font>
+                        </div>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">&nbsp;</td>
+                      <td align="right">
+                        <div align="right"></div>
+                      </td>
+                      <td align="right">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td colspan="9" align="center">
+                        <div align="center"></div>
+                        <form name="form1">
+                          <div align="center">
+                            <input type="hidden" name="seed" value="15">
+                            <input type="hidden" name="ftype" value="1">
+                            <input type="hidden" name="cat" value="">
+                            <input type="hidden" name="power" value="1">
+                            <input type="hidden" name="nrandrec" value="23">
+                            <input type="hidden" name="nrandunrec" value="23">
+                            <input type="hidden" name="perc" value="0">
+                            <input type="submit" name="Submit" value="Make 10 times bigger">
+                          </div>
+                        </form>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p></p>
+                <p></p>
+                <p><a href="http://gas.ndph.ox.ac.uk/jameslind/simplerand/simplerand3.cgi">&lt;&lt;&lt; Back to beginning</a></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> <!-- results -->
 
-    <!-- build:js scripts/plugins.js -->
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-    <!-- endbuild -->
 
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
+    </div> <!-- pages -->
+  </div> <!-- container -->
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/plugins.js -->
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js scripts/main.js -->
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
 </body>
 
 </html>
