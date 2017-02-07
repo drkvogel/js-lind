@@ -22,6 +22,10 @@ function Show5() { Show("age"); setTimeout("Show6()", 1000); }
 function Show6() { Show("cond"); }
 */
 
+// var errorCategory   = "<tr><td>&nbsp;</td><td><span><font color=\"red\">&gt;&gt;&gt; Please enter a category to be randomised</font></td></tr></span>\n";
+// var errorPercent    = "<tr><td>&nbsp;</td><td><span><font color=\"red\">&gt;&gt;&gt; Percentage must be between 0 and 100</font></td></tr></span>\n";
+// var errorNrandUnrec = "<tr><td>&nbsp;</td><td><span><font color=\"red\">*** Number of patients must be between 0 and 10000 ***</font></td></tr></span>\n";
+
 /* simplerand2_f.f from jameslind.git
 
       subroutine simplerand2(seed,iform,nrand,propx,nranda,nrandb, 

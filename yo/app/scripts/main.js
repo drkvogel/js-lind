@@ -1,24 +1,59 @@
 console.log('Ready...');
 
 var stage;
-    //   subroutine simplerand2(seed,iform,nrand,propx,nranda,nrandb, 
-    //  *  fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a,fact2_1b,
-    //  *  fact2_2a,fact2_2b,fact2_3a,fact2_3b,fact3_1a,fact3_1b,
-    //  *  fact3_2a,fact3_2b,fact3_3a,fact3_3b,fact3_4a,fact3_4b,  
-    //  *  factx_1a,factx_1b,factx_2a,factx_2b,
-    //  *  fact1_1an,fact1_1bn,fact1_2an,fact1_2bn,fact2_1an,fact2_1bn,
-    //  *  fact2_2an,fact2_2bn,fact2_3an,fact2_3bn,fact3_1an,fact3_1bn,
-    //  *  fact3_2an,fact3_2bn,fact3_3an,fact3_3bn,fact3_4an,fact3_4bn,  
-    //  *  factx_1an,factx_1bn,factx_2an,factx_2bn)
-// FORTRAN version used a 2d array of which which treatments were randomised into which factors
-// use a JS object instead?
-var factors;
-var nranda, nrandb;
 
+//  subroutine simplerand2(seed,iform,nrand,propx,nranda,nrandb, 
+//      fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a,fact2_1b,      factor 1, strata 1/2, treatment a/b
+//      fact2_2a,fact2_2b,fact2_3a,fact2_3b,fact3_1a,fact3_1b,
+//      fact3_2a,fact3_2b,fact3_3a,fact3_3b,fact3_4a,fact3_4b,  
+//      factx_1a,factx_1b,factx_2a,factx_2b,
+//      fact1_1an,fact1_1bn,fact1_2an,fact1_2bn,fact2_1an,fact2_1bn,
+//      fact2_2an,fact2_2bn,fact2_3an,fact2_3bn,fact3_1an,fact3_1bn,
+//      fact3_2an,fact3_2bn,fact3_3an,fact3_3bn,fact3_4an,fact3_4bn,  
+//      factx_1an,factx_1bn,factx_2an,factx_2bn)
+
+// FORTRAN version used a 2d array of which which treatments were randomised into which factors
+// use a JS object instead
+/*
+    * Assign to "Duration of health problem:"
+        Long term (30% probability)
+        More recent (70% probability)
+    * Assign to "Severity of health problem:"
+        Mild  (30% probability)
+        Moderate  (45% probability)
+        Severe  (25% probability)
+    * Assign to "Age, in years"
+        Under 15 (20% probability)
+        15-34  (25% probability)
+        35-64  (25% probability)
+        65 & older  (30% probability)
+    * Assign to "Condition: Very anxious?"
+        Yes (5% probability)
+        No (95% probability) */
+var factors = { // each strata for each factor has a tuple for a count of patients randomised to treatment A or B
+    fact1duration: {
+        s1longterm: [0, 0],
+        s2recent: [0, 0]
+    },
+    fact2severity: {
+        s1mild: [0, 0],
+        s2moderate: [0, 0],
+        s3severe: [0, 0]
+    },
+    fact3age: {
+        s1u15: [0, 0],
+        s2gt15lt35: [0, 0],
+        s3ge35lt65: [0, 0],
+        s4ge65: [0, 0]
+    },
+    fact4anxious: {
+        s1yes: [0, 0],
+        s2no: [0, 0]
+    }
+};
+
+var nranda, nrandb;
 var errorNrandRec   = "<p><font color=\"red\">*** Number of patients must be between 0 and 10000 ***</font></p>\n";
-// var errorCategory   = "<tr><td>&nbsp;</td><td><span><font color=\"red\">&gt;&gt;&gt; Please enter a category to be randomised</font></td></tr></span>\n";
-// var errorPercent    = "<tr><td>&nbsp;</td><td><span><font color=\"red\">&gt;&gt;&gt; Percentage must be between 0 and 100</font></td></tr></span>\n";
-// var errorNrandUnrec = "<tr><td>&nbsp;</td><td><span><font color=\"red\">*** Number of patients must be between 0 and 10000 ***</font></td></tr></span>\n";
 
 // gets NRAND random numbers between 0.0 & 1.0 for each of the 4 factor groups FACT1, FACT2, FACT3 & FACTX,
 // to determine the distributions between 2 theoretical treatment groups, treatment A & treatment B
@@ -30,93 +65,100 @@ var errorNrandRec   = "<p><font color=\"red\">*** Number of patients must be bet
 // possible gotchas: rand seed, 16-bit floating point rounding errors
 
 function simplerand(nrand, factors) { // Takes in nrand, iform & propx?
-      //var i, nrand, iform, seed, nranda, nrandb, trtdim, propx;
-     // fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a, fact2_1b,fact2_2a,fact2_2b,fact2_3a,fact2_3b, fact3_1a,fact3_1b,fact3_2a,fact3_2b,fact3_3a, fact3_3b,fact3_4a,fact3_4b,factx_1a,factx_1b, factx_2a,factx_2b,fact1_1an,fact1_1bn,fact1_2an, fact1_2bn,fact2_1an,fact2_1bn,fact2_2an,fact2_2bn, fact2_3an,fact2_3bn,fact3_1an,fact3_1bn, fact3_2an,fact3_2bn,fact3_3an,fact3_3bn,fact3_4an, fact3_4bn,factx_1an,factx_1bn,factx_2an,factx_2bn
+    //var i, nrand, iform, seed, nranda, nrandb, trtdim, propx;
+    // fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a, fact2_1b,fact2_2a,fact2_2b,fact2_3a,fact2_3b, fact3_1a,fact3_1b,fact3_2a,fact3_2b,fact3_3a, fact3_3b,fact3_4a,fact3_4b,factx_1a,factx_1b, factx_2a,factx_2b,fact1_1an,fact1_1bn,fact1_2an, fact1_2bn,fact2_1an,fact2_1bn,fact2_2an,fact2_2bn, fact2_3an,fact2_3bn,fact3_1an,fact3_1bn, fact3_2an,fact3_2bn,fact3_3an,fact3_3bn,fact3_4an, fact3_4bn,factx_1an,factx_1bn,factx_2an,factx_2bn
+    // real ntoss, randno, propxpc
 
-      // integer  fact1(2,2)/4*0/,fact2(3,2)/6*0/,fact3(4,2)/8*0/, factx(2,2)/4*0/
-      // real ntoss, randno, propxpc
+    // what's this? declaring and initialising 2D arrays
+    // integer fact1(2,2)/4*0/,fact2(3,2)/6*0/,fact3(4,2)/8*0/, factx(2,2)/4*0/ // declaring array dimensions
+    // fact1(1,1)=0 fact1(1,2)=0 fact1(2,1)=0 fact1(2,2)=0 fact2(1,1)=0 fact2(1,2)=0 fact2(2,1)=0 fact2(2,2)=0 fact2(3,1)=0 fact2(3,2)=0 fact3(1,1)=0 fact3(1,2)=0 fact3(2,1)=0 fact3(2,2)=0 fact3(3,1)=0 fact3(3,2)=0 fact3(4,1)=0 fact3(4,2)=0 factx(1,1)=0 factx(1,2)=0 factx(2,1)=0 factx(2,2)=0
+    // in JS there are technically no multidimensional arrays, but you can have an array of arrays
+    // fact1[][] etc
 
-      // what's this? initialising a 2D array
-      // in JS there are technically no multidimensional arrays, but you can have an array of arrays
-      // fact1[][] etc
-      //fact1(1,1)=0 fact1(1,2)=0 fact1(2,1)=0 fact1(2,2)=0 fact2(1,1)=0 fact2(1,2)=0 fact2(2,1)=0 fact2(2,2)=0 fact2(3,1)=0 fact2(3,2)=0 fact3(1,1)=0 fact3(1,2)=0 fact3(2,1)=0 fact3(2,2)=0 fact3(3,1)=0 fact3(3,2)=0 fact3(4,1)=0 fact3(4,2)=0 factx(1,1)=0 factx(1,2)=0 factx(2,1)=0 factx(2,2)=0
-
-    // c initialise vars fact1_1a=0 fact1_1b=0 fact1_2a=0 fact1_2b=0 fact2_1a=0 fact2_1b=0 fact2_2a=0 fact2_2b=0 fact2_3a=0 fact2_3b=0 fact3_1a=0 fact3_1b=0 fact3_2a=0 fact3_2b=0 fact3_3a=0 fact3_3b=0 fact3_4a=0 fact3_4b=0 factx_1a=0 factx_1b=0 factx_2a=0 factx_2b=0 fact1_1an=0 fact1_1bn=0 fact1_2an=0 fact1_2bn=0 fact2_1an=0 fact2_1bn=0 fact2_2an=0 fact2_2bn=0 fact2_3an=0 fact2_3bn=0 fact3_1an=0 fact3_1bn=0 fact3_2an=0 fact3_2bn=0 fact3_3an=0 fact3_3bn=0 fact3_4an=0 fact3_4bn=0 factx_1an=0 factx_1bn=0 factx_2an=0 factx_2bn=0
+    // Fortran version has individual variables for each element in each array in order to pass back to C program
+    // initialise vars fact1_1a=0 fact1_1b=0 fact1_2a=0 fact1_2b=0 fact2_1a=0 fact2_1b=0 fact2_2a=0 fact2_2b=0 fact2_3a=0 fact2_3b=0 fact3_1a=0 fact3_1b=0 fact3_2a=0 fact3_2b=0 fact3_3a=0 fact3_3b=0 fact3_4a=0 fact3_4b=0 factx_1a=0 factx_1b=0 factx_2a=0 factx_2b=0 fact1_1an=0 fact1_1bn=0 fact1_2an=0 fact1_2bn=0 fact2_1an=0 fact2_1bn=0 fact2_2an=0 fact2_2bn=0 fact2_3an=0 fact2_3bn=0 fact3_1an=0 fact3_1bn=0 fact3_2an=0 fact3_2bn=0 fact3_3an=0 fact3_3bn=0 fact3_4an=0 fact3_4bn=0 factx_1an=0 factx_1bn=0 factx_2an=0 factx_2bn=0
     // nranda=0 nrandb=0 
     for (var i=1; i < nrand; i++) { // do i=1,nrand
         var randno = Math.random(); // flip a coin
         if (randno < 0.5) {     // treatment A
-            trtdim = 1;
+            trtdim = 0;
             nranda++;// = nranda+1
         } else {                // treatment B
-            trtdim = 2;
+            trtdim = 1;
             nrandb++; //=nrandb+1
         }                    
 
-// simulate patient factors using random numbers instead of real data
+        // simulate patient factors using random numbers instead of real data
 
-// factor 1 (duration of health problem) 0.7=long-term; 0.3=recent
+        // factor 1 (duration of health problem): 0.7 long-term; 0.3 recent
         randno = Math.random(); 
         if (randno < 0.3) {
-            //fact1(1,trtdim)=fact1(1,trtdim)+1 
+            factors.fact1duration.s1longterm[trtdim]++; //fact1(1,trtdim)=fact1(1,trtdim)+1
         } else {
-            //fact1(2,trtdim)=fact1(2,trtdim)+1
+            factors.fact1duration.s2recent[trtdim]++; //fact1(2,trtdim)=fact1(2,trtdim)+1
         }
 
-// factor 2 (severity of health problem) 0.3: mild; 0.45 moderate; 0.25: severe
+        // factor 2 (severity of health problem) 0.3: mild; 0.45 moderate; 0.25: severe
         randno = Math.random();
         if (randno < 0.3) {
-            //fact2(1,trtdim)=fact2(1,trtdim)+1
+            factors.fact2severity.s1mild[trtdim]++; //fact2(1,trtdim)=fact2(1,trtdim)+1
         } else if ((randno > 0.3) && (randno < 0.75)) {
-            //fact2(2,trtdim)=fact2(2,trtdim)+1
+            factors.fact2severity.s2moderate[trtdim]++; //fact2(2,trtdim)=fact2(2,trtdim)+1
         } else {
-            //fact2(3,trtdim)=fact2(3,trtdim)+1
+            factors.fact2severity.s3severe[trtdim]++; //fact2(3,trtdim)=fact2(3,trtdim)+1
         }
 
-// factor 3 (age) 0.2= under 15; 0.25= 14-34 yrs; 0.25= 35-64 yrs; 0.3= 65 & older
+        // factor 3 (age) 0.2= under 15; 0.25= 14-34 yrs; 0.25= 35-64 yrs; 0.3= 65 & older
         randno = Math.random();
         if (randno < 0.2) {
-            // fact3(1,trtdim)=fact3(1,trtdim)+1
+            factors.fact3age.s1u15[trtdim]++; // fact3(1,trtdim)=fact3(1,trtdim)+1
         } else if ((randno > 0.2) && (randno < 0.45)) {
-            //fact3(2,trtdim)=fact3(2,trtdim)+1
+            factors.fact3age.s2gt15lt35[trtdim]++; //fact3(2,trtdim)=fact3(2,trtdim)+1
         } else if ((randno > 0.45) && (randno < 0.7)) {
-            //fact3(3,trtdim)=fact3(3,trtdim)+1
+            factors.fact3age.s3ge35lt65[trtdim]++; //fact3(3,trtdim)=fact3(3,trtdim)+1
         } else {
-            //fact3(4,trtdim)=fact3(4,trtdim)+1
+            factors.fact3age.s4ge65[trtdim]++; //fact3(4,trtdim)=fact3(4,trtdim)+1
         }
 
-// factor X (was a factor chosen by the user, now defaults to "Very anxious")
-//         propxpc=propx/100.0
+        // factor X (was a factor chosen by the user, now defaults to "Very anxious") (default 5%?)
         randno = Math.random();
-        if (iform === 1) {
-          if (randno < 0.05) {
-              factx(1,trtdim)=factx(1,trtdim)+1
-          } else {
-              factx(2,trtdim)=factx(2,trtdim)+1
-          }
+        if (randno < 0.05) { // yes, default 5%
+            factors.fact4anxious.s1yes[trtdim]++; //factx(1,trtdim)=factx(1,trtdim)+1
         } else {
-	      if (randno < propxpc) {
-              //factx(1,trtdim)=factx(1,trtdim)+1
-          } else {
-              factx(2,trtdim)=factx(2,trtdim)+1
-          }
+            factors.fact4anxious.s2no[trtdim]++; //ffactx(2,trtdim)=factx(2,trtdim)+1
         }
+
+        // with variable factor, maybe not needed
+        // propxpc=propx/100.0 //??
+        //if (iform === 1) {
+        // ... (as above)
+        // } else {
+        //     if (randno < propxpc) {
+        //         //factx(1,trtdim)=factx(1,trtdim)+1
+        //     } else {
+        //         factx(2,trtdim)=factx(2,trtdim)+1
+        //     }
+        // }
+
+        // now convert to percentages?
+
+
     } // end do
 }
 
-// convert to percentages and assign array values to variables to be passed back to main program
+// Fortran: "convert to percentages and assign array values to variables to be passed back to main program"
 // NINT(A) rounds its argument to the nearest whole number. 0.5 rounds up to 1 by convention? Nothing in GNU docs...
 // In JS: Math.round(2.5); // 3
 // JavaScript Numbers are Always 64-bit Floating Point (so don't have to convert e.g. nranda to real)
 // make a function to do all this...
-function convertToPC(nranda, nrandb, factor, percentage) {
-    percentage = Math.round(100 * factor / nranda);   
+function toPercent(nrandx, factor, percentage) {
+    percentage = Math.round(100 * factor / nrandx);
 }
 
       if (nranda === 0) {
         // fact1_1a=0
       } else {
-      	// fact1_1a = nint(100.0*fact1(1,1)/real(nranda))
+      	// fact1_1a = nint(100.0*fact1(1,1)/real(nranda)) // 
         fact1_1a = Math.round(100 * fact1(1,1) / nranda)    
       }
       //fact1_1an=fact1(1,1)
@@ -268,7 +310,6 @@ function convertToPC(nranda, nrandb, factor, percentage) {
 //       endif
 //       factx_2bn=factx(2,2)
 
-
 // c test
 // c      fact1_1a = propx
 // c      fact1_1b = nint(propxpc)
@@ -308,21 +349,21 @@ function Show5() { Show("age"); setTimeout("Show6()", 1000); }
 function Show6() { Show("cond"); }
 */
 
-function show(id) {
-    $(id).show();
-	// if(document.all) {
-	// 	for(var i = 0; i < document.all.length; ++i) {
-	// 		if(document.all[i].name == ename) {
-	// 			document.all[i].style.visibility ='visible';
-	// 		}
-	// 	}
-	// } else {
-	// 	var objs = document.getElementsByName(ename);
-	//    	for(var i = 0; i < objs.length; ++i) {  
-	// 		objs[i].style.visibility ='visible';
-	// 	}
-	// }
-}
+// function show(id) {
+//     $(id).show();
+// 	// if(document.all) {
+// 	// 	for(var i = 0; i < document.all.length; ++i) {
+// 	// 		if(document.all[i].name == ename) {
+// 	// 			document.all[i].style.visibility ='visible';
+// 	// 		}
+// 	// 	}
+// 	// } else {
+// 	// 	var objs = document.getElementsByName(ename);
+// 	//    	for(var i = 0; i < objs.length; ++i) {  
+// 	// 		objs[i].style.visibility ='visible';
+// 	// 	}
+// 	// }
+// }
 
 function show1() { setTimeout(show2, 1000); }
 function show2() { $("#heading").show(); setTimeout(show3, 1000); }
