@@ -1,6 +1,6 @@
 console.log('Ready...');
 
-var stage;
+var stage, nrand;
 
 //  subroutine simplerand2(seed,iform,nrand,propx,nranda,nrandb, 
 //      fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a,fact2_1b,      factor 1, strata 1/2, treatment a/b
@@ -64,7 +64,15 @@ var errorNrandRec   = "<p><font color=\"red\">*** Number of patients must be bet
 // e.g. FACT3(2,1) is the number of patients for factor 2 (age), category 2 (15-34), on treatment A
 // possible gotchas: rand seed, 16-bit floating point rounding errors
 
-function simplerand(nrand, factors) { // Takes in nrand, iform & propx?
+function simplerand() { // Takes in nrand, iform & propx?
+    var enteredNumber = parseInt($('#nrandrec').val(), 10);
+    if (isNaN(enteredNumber)) {
+        alert('Doh!');
+    } else {
+        alert('simplerand(): got the number: ' + enteredNumber);
+        nrand = enteredNumber;
+    }
+    console.log(factors); //alert(factors); // doesn't print whole object
     //var i, nrand, iform, seed, nranda, nrandb, trtdim, propx;
     // fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a, fact2_1b,fact2_2a,fact2_2b,fact2_3a,fact2_3b, fact3_1a,fact3_1b,fact3_2a,fact3_2b,fact3_3a, fact3_3b,fact3_4a,fact3_4b,factx_1a,factx_1b, factx_2a,factx_2b,fact1_1an,fact1_1bn,fact1_2an, fact1_2bn,fact2_1an,fact2_1bn,fact2_2an,fact2_2bn, fact2_3an,fact2_3bn,fact3_1an,fact3_1bn, fact3_2an,fact3_2bn,fact3_3an,fact3_3bn,fact3_4an, fact3_4bn,factx_1an,factx_1bn,factx_2an,factx_2bn
     // real ntoss, randno, propxpc
@@ -78,6 +86,7 @@ function simplerand(nrand, factors) { // Takes in nrand, iform & propx?
     // Fortran version has individual variables for each element in each array in order to pass back to C program
     // initialise vars fact1_1a=0 fact1_1b=0 fact1_2a=0 fact1_2b=0 fact2_1a=0 fact2_1b=0 fact2_2a=0 fact2_2b=0 fact2_3a=0 fact2_3b=0 fact3_1a=0 fact3_1b=0 fact3_2a=0 fact3_2b=0 fact3_3a=0 fact3_3b=0 fact3_4a=0 fact3_4b=0 factx_1a=0 factx_1b=0 factx_2a=0 factx_2b=0 fact1_1an=0 fact1_1bn=0 fact1_2an=0 fact1_2bn=0 fact2_1an=0 fact2_1bn=0 fact2_2an=0 fact2_2bn=0 fact2_3an=0 fact2_3bn=0 fact3_1an=0 fact3_1bn=0 fact3_2an=0 fact3_2bn=0 fact3_3an=0 fact3_3bn=0 fact3_4an=0 fact3_4bn=0 factx_1an=0 factx_1bn=0 factx_2an=0 factx_2bn=0
     // nranda=0 nrandb=0 
+    var trtdim; // treatment dimension?
     for (var i=1; i < nrand; i++) { // do i=1,nrand
         var randno = Math.random(); // flip a coin
         if (randno < 0.5) {     // treatment A
@@ -159,7 +168,7 @@ function toPercent(nrandx, factor, percentage) {
         // fact1_1a=0
       } else {
       	// fact1_1a = nint(100.0*fact1(1,1)/real(nranda)) // 
-        fact1_1a = Math.round(100 * fact1(1,1) / nranda)    
+        //fact1_1a = Math.round(100 * fact1(1,1) / nranda)    
       }
       //fact1_1an=fact1(1,1)
 
