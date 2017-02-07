@@ -136,7 +136,8 @@
                     </tr>
                     <tr>
                       <td>
-                        <h4 align="center">23 patients were randomised,<br> 10 to treatment A, 13 to treatment B:</h4>
+                        <h4 align="center"><span id="nrand"></span> patients were randomised,<br>
+                        <span id="treatA"></span> to treatment A, <span id="treatB"></span> to treatment B:</h4>
                       </td>
                     </tr>
                   </tbody>
@@ -160,17 +161,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
-                      <td align="right">(total = 10)</td>
+                      <td align="right">(total: <span id="totalA"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" id="hideable" name="heading" style="visibility:hidden">
-                        <font color="#0000FF">(total=10)</font>
+                        <font color="#0000FF">(total=<span id="totalANext"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">(total = 13)</td>
+                      <td align="right">(total = <span id="totalB"></span>)</td>
                       <td name="n_trt_b2">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="heading" style="visibility:hidden">(total=13)</font>
+                          <font color="#0000FF" name="heading" style="visibility:hidden">(total=<span id="totalBNext"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -215,33 +216,27 @@
                       <td colspan="2"><b>Duration of health problem</b></td>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
-                      <td>
-                        <font color="#0000FF"></font>
-                      </td>
+                      <td><font color="#0000FF"></font></td>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
+                      <td><div align="right"><font color="#0000FF"></font></div></td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>Long term</td>
-                      <td align="right">1 (10)</td>
+                      <td align="right"><span id="t1f1s1"></span> (<span id="t1f1s1pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" id="hideable" name="duration" style="visibility:hidden">
-                        <font color="#0000FF">1 (10)</font>
+                        <font color="#0000FF"><span id="t1f1s1next"></span> (<span id="t1f1s1nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">4 (31)</td>
+                      <td align="right"><span id="t2f1s1"></span> (<span id="t2f1s1pc"></span>)</td>
                       <td name="n_dur_b1">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="duration" style="visibility:hidden">4 (31)</font>
+                          <font color="#0000FF" name="duration" style="visibility:hidden"><span id="t2f1s1next"></span> (<span id="t2f1s1nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -249,17 +244,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>More recent</td>
-                      <td align="right">9 (90)</td>
+                      <td align="right"><span id="t1f1s2"></span> (<span id="t1f1s2pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="duration" style="visibility:hidden">
-                        <font color="#0000FF">9 (90)</font>
+                        <font color="#0000FF"><span id="t1f1s2next"></span> (<span id="t1f1s2nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">9 (69)</td>
+                      <td align="right"><span id="t2f1s2"></span> (<span id="t2f1s2pc"></span>)</td>
                       <td name="n_dur_b2">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="duration" style="visibility:hidden">9 (69)</font>
+                          <font color="#0000FF" name="duration" style="visibility:hidden"><span id="t2f1s2next"></span> (<span id="t2f1s2nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -302,17 +297,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>Mild</td>
-                      <td align="right">1 (10)</td>
+                      <td align="right"><span id="t1f2s1"></span> (<span id="t1f2s1pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="sev" style="visibility:hidden">
-                        <font color="#0000FF">1 (10)</font>
+                        <font color="#0000FF"><span id="t1f2s1next"></span> (<span id="t1f2s1nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">5 (38)</td>
+                      <td align="right"><span id="t2f2s1"></span> (<span id="t2f2s1pc"></span>)</td>
                       <td name="n_sev_b1">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="sev" style="visibility:hidden">5 (38)</font>
+                          <font color="#0000FF" name="sev" style="visibility:hidden"><span id="t2f2s1next"></span> (<span id="t2f2s1nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -320,17 +315,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>Moderate</td>
-                      <td align="right">6 (60)</td>
+                      <td align="right"><span id="t1f2s2"></span> (<span id="t1f2s2pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="sev" style="visibility:hidden">
-                        <font color="#0000FF">6 (60)</font>
+                        <font color="#0000FF"><span id="t1f2s2next"></span> (<span id="t1f2s2nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">4 (31)</td>
+                      <td align="right"><span id="t2f2s2"></span> (<span id="t2f2s2pc"></span>)</td>
                       <td name="n_sev_b2">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="sev" style="visibility:hidden">4 (31)</font>
+                          <font color="#0000FF" name="sev" style="visibility:hidden"><span id="t2f2s2next"></span> (<span id="t2f2s2nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -338,17 +333,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>Severe</td>
-                      <td align="right">3 (30)</td>
+                      <td align="right"><span id="t1f2s3"></span> (<span id="t1f2s3pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="sev" style="visibility:hidden">
-                        <font color="#0000FF">3 (30)</font>
+                        <font color="#0000FF"><span id="t1f2s3next"></span> (<span id="t1f2s3nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">4 (31)</td>
+                      <td align="right"><span id="t2f2s3"></span> (<span id="t2f2s3pc"></span>)</td>
                       <td name="n_sev_b3">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="sev" style="visibility:hidden">4 (31)</font>
+                          <font color="#0000FF" name="sev" style="visibility:hidden"><span id="t2f2s3next"></span> (<span id="t2f2s3nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -391,17 +386,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>Under 15</td>
-                      <td align="right">2 (20)</td>
+                      <td align="right"><span id="t1f3s1"></span> (<span id="t1f3s1pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="age" style="visibility:hidden">
-                        <font color="#0000FF">2 (20)</font>
+                        <font color="#0000FF"><span id="t1f3s1next"></span> (<span id="t1f3s1nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">4 (31)</td>
+                      <td align="right"><span id="t2f3s1"></span> (<span id="t2f3s1pc"></span>)</td>
                       <td name="n_age_b1">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="age" style="visibility:hidden">4 (31)</font>
+                          <font color="#0000FF" name="age" style="visibility:hidden"><span id="t2f3s1next"></span> (<span id="t2f3s1nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -409,17 +404,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>15-34</td>
-                      <td align="right">2 (20)</td>
+                      <td align="right"><span id="t1f3s2"></span> (<span id="t1f3s2pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="age" style="visibility:hidden">
-                        <font color="#0000FF">2 (20)</font>
+                        <font color="#0000FF"><span id="t1f3s2next"></span> (<span id="t1f3s2nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">2 (15)</td>
+                      <td align="right"><span id="t2f3s2"></span> (<span id="t2f3s2pc"></span>)</td>
                       <td name="n_age_b2">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="age" style="visibility:hidden">2 (15)</font>
+                          <font color="#0000FF" name="age" style="visibility:hidden"><span id="t2f3s2next"></span> (<span id="t2f3s2nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -427,17 +422,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>35-64</td>
-                      <td align="right">2 (20)</td>
+                      <td align="right"><span id="t1f3s3"></span> (<span id="t1f3s3pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="age" style="visibility:hidden">
-                        <font color="#0000FF">2 (20)</font>
+                        <font color="#0000FF"><span id="t1f3s3next"></span> (<span id="t1f3s3nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">1 (8)</td>
+                      <td align="right"><span id="t2f3s3"></span> (<span id="t2f3s3pc"></span>)</td>
                       <td name="n_age_b3">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="age" style="visibility:hidden">1 (8)</font>
+                          <font color="#0000FF" name="age" style="visibility:hidden"><span id="t2f3s3next"></span> (<span id="t2f3s3nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -445,17 +440,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>65 &amp; older</td>
-                      <td align="right">4 (40)</td>
+                      <td align="right"><span id="t1f3s4"></span> (<span id="t1f3s4pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="age" style="visibility:hidden">
-                        <font color="#0000FF">4 (40)</font>
+                        <font color="#0000FF"><span id="t1f3s4next"></span> (<span id="t1f3s4nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">&nbsp;6 (46)</td>
+                      <td align="right"><span id="t2f3s4"></span> (<span id="t2f3s4pc"></span>)</td>
                       <td name="n_age_b4">&nbsp;</td>
                       <td>
                         <div align="right">
-                          <font color="#0000FF" name="age" style="visibility:hidden">6 (46)</font>
+                          <font color="#0000FF" name="age" style="visibility:hidden"><span id="t2f3s4next"></span> (<span id="t2f3s4nextpc"></span>)</font>
                         </div>
                       </td>
                       <td>&nbsp;</td>
@@ -498,17 +493,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>Yes</td>
-                      <td align="right">0 (0)</td>
+                      <td align="right"><span id="t1f4s1"></span> (<span id="t1f4s1pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="cond" style="visibility:hidden">
-                        <font color="#0000FF">0 (0)</font>
+                        <font color="#0000FF"><span id="t1f4s1next"></span> (<span id="t1f4s1nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">1 (8)</td>
+                      <td align="right"><span id="t2f4s1"></span> (<span id="t2f4s1"></span>)</td>
                       <td align="right" name="n_cnd_b1">&nbsp;</td>
                       <td align="right">
                         <div align="right">
-                          <font color="#0000FF" name="cond" style="visibility:hidden">1 (8)</font>
+                          <font color="#0000FF" name="cond" style="visibility:hidden"><span id="t2f4s1next"></span> (<span id="t2f4s1nextpc"></span>)</font>
                         </div>
                       </td>
                       <td align="right">&nbsp;</td>
@@ -516,17 +511,17 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td>No</td>
-                      <td align="right">10 (100)</td>
+                      <td align="right"><span id="t1f4s2"></span> (<span id="t1f4s2pc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right" name="cond" style="visibility:hidden">
-                        <font color="#0000FF">10 (100)</font>
+                        <font color="#0000FF"><span id="t1f4s2next"></span> (<span id="t1f4s2nextpc"></span>)</font>
                       </td>
                       <td align="right">&nbsp;</td>
-                      <td align="right">12 (92)</td>
+                      <td align="right"><span id="t2f4s2"></span> (<span id="t2f4s2pc"></span>)</td>
                       <td align="right" name="n_cnd_b2">&nbsp;</td>
                       <td align="right">
                         <div align="right">
-                          <font color="#0000FF" name="cond" style="visibility:hidden">12 (92)</font>
+                          <font color="#0000FF" name="cond" style="visibility:hidden"><span id="t2f4s2next"></span> (<span id="t2f4s2nextpc"></span>)</font>
                         </div>
                       </td>
                       <td align="right">&nbsp;</td>
