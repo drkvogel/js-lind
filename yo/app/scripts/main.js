@@ -98,8 +98,8 @@ function simplerand() { // Takes in nrand, iform & propx?
     // Fortran version has individual variables for each element in each array in order to pass back to C program
     // initialise vars fact1_1a=0 fact1_1b=0 fact1_2a=0 fact1_2b=0 fact2_1a=0 fact2_1b=0 fact2_2a=0 fact2_2b=0 fact2_3a=0 fact2_3b=0 fact3_1a=0 fact3_1b=0 fact3_2a=0 fact3_2b=0 fact3_3a=0 fact3_3b=0 fact3_4a=0 fact3_4b=0 factx_1a=0 factx_1b=0 factx_2a=0 factx_2b=0 fact1_1an=0 fact1_1bn=0 fact1_2an=0 fact1_2bn=0 fact2_1an=0 fact2_1bn=0 fact2_2an=0 fact2_2bn=0 fact2_3an=0 fact2_3bn=0 fact3_1an=0 fact3_1bn=0 fact3_2an=0 fact3_2bn=0 fact3_3an=0 fact3_3bn=0 fact3_4an=0 fact3_4bn=0 factx_1an=0 factx_1bn=0 factx_2an=0 factx_2bn=0
     // nranda=0 nrandb=0 
-    var treatment; // treatment dimension?
     for (var i = 1; i < nrand; i++) { // do i=1,nrand
+        var treatment; // treatment dimension?
         var randno = Math.random(); // flip a coin
         if (randno < 0.5) {     // treatment A
             treatment = 0;
