@@ -2,55 +2,7 @@ console.log('Ready...');
 
 var stage = "start", nrand;
 
-//  subroutine simplerand2(seed,iform,nrand,propx,nranda,nrandb,
-//      fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a,fact2_1b,      factor 1, strata 1/2, treatment a/b
-//      fact2_2a,fact2_2b,fact2_3a,fact2_3b,fact3_1a,fact3_1b,
-//      fact3_2a,fact3_2b,fact3_3a,fact3_3b,fact3_4a,fact3_4b,
-//      factx_1a,factx_1b,factx_2a,factx_2b,
-//      fact1_1an,fact1_1bn,fact1_2an,fact1_2bn,fact2_1an,fact2_1bn,
-//      fact2_2an,fact2_2bn,fact2_3an,fact2_3bn,fact3_1an,fact3_1bn,
-//      fact3_2an,fact3_2bn,fact3_3an,fact3_3bn,fact3_4an,fact3_4bn,
-//      factx_1an,factx_1bn,factx_2an,factx_2bn)
 
-// FORTRAN version used a 2d array of which which treatments were randomised into which factors
-// use a JS object instead
-/*
-    * Assign to "Duration of health problem:"
-        Long term (30% probability)
-        More recent (70% probability)
-    * Assign to "Severity of health problem:"
-        Mild  (30% probability)
-        Moderate  (45% probability)
-        Severe  (25% probability)
-    * Assign to "Age, in years"
-        Under 15 (20% probability)
-        15-34  (25% probability)
-        35-64  (25% probability)
-        65 & older  (30% probability)
-    * Assign to "Condition: Very anxious?"
-        Yes (5% probability)
-        No (95% probability) */
-var factors = { // each strata for each factor has a tuple for a count of patients randomised to treatment A or B
-    fact1duration: {
-        s1longterm: [0, 0],
-        s2recent: [0, 0]
-    },
-    fact2severity: {
-        s1mild: [0, 0],
-        s2moderate: [0, 0],
-        s3severe: [0, 0]
-    },
-    fact3age: {
-        s1u15: [0, 0],
-        s2gt15lt35: [0, 0],
-        s3ge35lt65: [0, 0],
-        s4ge65: [0, 0]
-    },
-    fact4anxious: {
-        s1yes: [0, 0],
-        s2no: [0, 0]
-    }
-};
 
 var nranda, nrandb;
 var errorNrandRec = "<p><font color=\"red\">*** Number of patients must be between 0 and 10000 ***</font></p>\n";
@@ -68,7 +20,7 @@ var errorNrandRec = "<p><font color=\"red\">*** Number of patients must be betwe
 $(function () {
     $("#nrandrec").keypress(function (e) {
         if (e.keyCode == 13) { // enter
-            simplerand();
+            begin();
         }
     });
 });
@@ -79,14 +31,14 @@ function makeBigger() {
         alert('Number of patients must be between 0 and 100,000');
     } else {
         nrand = next;
-        alert('Make bigger! nrand is now: ' + nrand);
+        show1();
+        console.log('makeBigger(): nrand is now: ' + nrand);
     }
 }
 
 // function currentPage() {
 //     return pages[current]; //console.log('currentPage[' + current + ']:' + obj(pages[current]));
 // }
-
 var currentPage = '#intro';
 
 function showPage(id) {
@@ -95,11 +47,11 @@ function showPage(id) {
     $(id).show();
 }
 
-function begin() {
-    nrand = 0;
-    stage = "intro";
-    alert('begin!');
-}
+// function begin() {
+//     nrand = 0;
+//     stage = "intro";
+//     //alert('begin!');
+// }
 
 // 10 times bigger values are hidden using "visibility: hidden" which preserves the onscreen space for an element
 // as opposed to "display: none" which causes the element not to be present at all, which could break the layout
@@ -135,7 +87,7 @@ function hideNext() {
     $("#summaryNext").hide();
 }
 
-function simplerand() { // Takes in nrand, iform & propx?
+function begin() { // Takes in nrand, iform & propx?
     console.log('simplerand(): got the number: ' + enteredNumber);
     if (stage === "start") {
         var enteredNumber = parseInt($('#nrandrec').val(), 10);
@@ -145,36 +97,50 @@ function simplerand() { // Takes in nrand, iform & propx?
         } else {
             nrand = enteredNumber;
             hideNext(); // make sure "10 times bigger" values are hidden to begin with
+            simplerand();
+            //calcResults();
             $('#intro').hide();
             $('#results').show();
-            calcResults();
-            show1();
+            //show1();
         }
     }
-    console.log(factors); //alert(factors); // doesn't print whole object
-    //var i, nrand, iform, seed, nranda, nrandb, treatment, propx;
-    // fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a, fact2_1b,fact2_2a,fact2_2b,fact2_3a,fact2_3b, fact3_1a,fact3_1b,fact3_2a,fact3_2b,fact3_3a, fact3_3b,fact3_4a,fact3_4b,factx_1a,factx_1b, factx_2a,factx_2b,fact1_1an,fact1_1bn,fact1_2an, fact1_2bn,fact2_1an,fact2_1bn,fact2_2an,fact2_2bn, fact2_3an,fact2_3bn,fact3_1an,fact3_1bn, fact3_2an,fact3_2bn,fact3_3an,fact3_3bn,fact3_4an, fact3_4bn,factx_1an,factx_1bn,factx_2an,factx_2bn
-    // real ntoss, randno, propxpc
+}
 
-    // what's this? declaring and initialising 2D arrays
-    // integer fact1(2,2)/4*0/,fact2(3,2)/6*0/,fact3(4,2)/8*0/, factx(2,2)/4*0/ // declaring array dimensions
-    // fact1(1,1)=0 fact1(1,2)=0 fact1(2,1)=0 fact1(2,2)=0 fact2(1,1)=0 fact2(1,2)=0 fact2(2,1)=0 fact2(2,2)=0 fact2(3,1)=0 fact2(3,2)=0 fact3(1,1)=0 fact3(1,2)=0 fact3(2,1)=0 fact3(2,2)=0 fact3(3,1)=0 fact3(3,2)=0 fact3(4,1)=0 fact3(4,2)=0 factx(1,1)=0 factx(1,2)=0 factx(2,1)=0 factx(2,2)=0
-    // in JS there are technically no multidimensional arrays, but you can have an array of arrays
-    // fact1[][] etc
+function simplerand() {
+    // FORTRAN version used a 2d array of which which treatments were randomised into which factors
+    // use a JS object instead
+    var factors = { // each strata for each factor has a tuple for a count of patients randomised to treatment A or B
+        f1: { // duration
+            s1: [0, 0],
+            s2: [0, 0]
+        },
+        f2: { // severity
+            s1: [0, 0],
+            s2: [0, 0],
+            s3: [0, 0]
+        },
+        f3: { // age
+            s1: [0, 0],
+            s2: [0, 0],
+            s3: [0, 0],
+            s4: [0, 0]
+        },
+        f4: { // anxious
+            s1: [0, 0],
+            s2: [0, 0]
+        }
+    };    
 
-    // Fortran version has individual variables for each element in each array in order to pass back to C program
-    // initialise vars fact1_1a=0 fact1_1b=0 fact1_2a=0 fact1_2b=0 fact2_1a=0 fact2_1b=0 fact2_2a=0 fact2_2b=0 fact2_3a=0 fact2_3b=0 fact3_1a=0 fact3_1b=0 fact3_2a=0 fact3_2b=0 fact3_3a=0 fact3_3b=0 fact3_4a=0 fact3_4b=0 factx_1a=0 factx_1b=0 factx_2a=0 factx_2b=0 fact1_1an=0 fact1_1bn=0 fact1_2an=0 fact1_2bn=0 fact2_1an=0 fact2_1bn=0 fact2_2an=0 fact2_2bn=0 fact2_3an=0 fact2_3bn=0 fact3_1an=0 fact3_1bn=0 fact3_2an=0 fact3_2bn=0 fact3_3an=0 fact3_3bn=0 fact3_4an=0 fact3_4bn=0 factx_1an=0 factx_1bn=0 factx_2an=0 factx_2bn=0
-    // nranda=0 nrandb=0
-    
-    for (var i=1; i < nrand; i++) { // do i=1,nrand
-        var treatment; // treatment dimension?
-        var randno = Math.random(); // flip a coin
-        if (randno < 0.5) {     // treatment A
-            treatment = 0;
-            nranda++;// = nranda+1
-        } else {                // treatment B
+    console.log(factors);
+    for (var i=1; i < nrand; i++) {         // do i=1,nrand
+        var treatment;                      // treatment dimension?
+        var randno = Math.random();         // flip a coin
+        if (randno < 0.5) {                 // treatment A
+            treatment = 0;                  // is an index into an array, remember, so 0-indexed
+            nranda += 1;
+        } else {                            // treatment B
             treatment = 1;
-            nrandb++; //=nrandb+1
+            nrandb += 1;
         }
 
         // simulate patient factors using random numbers instead of real data
@@ -182,57 +148,46 @@ function simplerand() { // Takes in nrand, iform & propx?
         // factor 1 (duration of health problem): 0.7 long-term; 0.3 recent
         randno = Math.random();
         if (randno < 0.3) {
-            factors.fact1duration.s1longterm[treatment]++; //fact1(1,treatment)=fact1(1,treatment)+1
+            factors.f1.s1[treatment]++;     //fact1(1,treatment)=fact1(1,treatment)+1
         } else {
-            factors.fact1duration.s2recent[treatment]++; //fact1(2,treatment)=fact1(2,treatment)+1
+            factors.f1.s2[treatment]++;     //fact1(2,treatment)=fact1(2,treatment)+1
         }
 
         // factor 2 (severity of health problem) 0.3: mild; 0.45 moderate; 0.25: severe
         randno = Math.random();
         if (randno < 0.3) {
-            factors.fact2severity.s1mild[treatment]++; //fact2(1,treatment)=fact2(1,treatment)+1
+            factors.f2.s1[treatment]++;     //fact2(1,treatment)=fact2(1,treatment)+1
         } else if ((randno > 0.3) && (randno < 0.75)) {
-            factors.fact2severity.s2moderate[treatment]++; //fact2(2,treatment)=fact2(2,treatment)+1
+            factors.f2.s2[treatment]++;     //fact2(2,treatment)=fact2(2,treatment)+1
         } else {
-            factors.fact2severity.s3severe[treatment]++; //fact2(3,treatment)=fact2(3,treatment)+1
+            factors.f2.s3[treatment]++;     //fact2(3,treatment)=fact2(3,treatment)+1
         }
 
         // factor 3 (age) 0.2= under 15; 0.25= 14-34 yrs; 0.25= 35-64 yrs; 0.3= 65 & older
         randno = Math.random();
         if (randno < 0.2) {
-            factors.fact3age.s1u15[treatment]++; // fact3(1,treatment)=fact3(1,treatment)+1
+            factors.f3.s1[treatment]++;     // fact3(1,treatment)=fact3(1,treatment)+1
         } else if ((randno > 0.2) && (randno < 0.45)) {
-            factors.fact3age.s2gt15lt35[treatment]++; //fact3(2,treatment)=fact3(2,treatment)+1
+            factors.f3.s2[treatment]++;     //fact3(2,treatment)=fact3(2,treatment)+1
         } else if ((randno > 0.45) && (randno < 0.7)) {
-            factors.fact3age.s3ge35lt65[treatment]++; //fact3(3,treatment)=fact3(3,treatment)+1
+            factors.f3.s3[treatment]++;     //fact3(3,treatment)=fact3(3,treatment)+1
         } else {
-            factors.fact3age.s4ge65[treatment]++; //fact3(4,treatment)=fact3(4,treatment)+1
+            factors.f3.s4[treatment]++;     //fact3(4,treatment)=fact3(4,treatment)+1
         }
 
         // factor X (was a factor chosen by the user, now defaults to "Very anxious") (default 5%?)
         randno = Math.random();
-        if (randno < 0.05) { // yes, default 5%
-            factors.fact4anxious.s1yes[treatment]++; //factx(1,treatment)=factx(1,treatment)+1
+        if (randno < 0.05) {                // yes, default 5%
+            factors.f4.s1[treatment]++;     //factx(1,treatment)=factx(1,treatment)+1
         } else {
-            factors.fact4anxious.s2no[treatment]++; //ffactx(2,treatment)=factx(2,treatment)+1
+            factors.f4.s2[treatment]++;     //ffactx(2,treatment)=factx(2,treatment)+1
         }
-
-        // with variable factor, maybe not needed
-        // propxpc=propx/100.0 //??
-        //if (iform === 1) {
-        // ... (as above)
-        // } else {
-        //     if (randno < propxpc) {
-        //         //factx(1,treatment)=factx(1,treatment)+1
-        //     } else {
-        //         factx(2,treatment)=factx(2,treatment)+1
-        //     }
-        // }
-
-        // now convert to percentages?
-
-
     } // end do
+    console.log(factors);
+    // now convert numbers to percentages...
+
+    // and display
+    displayResults();
 }
 
 // Fortran: "convert to percentages and assign array values to variables to be passed back to main program"
@@ -244,7 +199,7 @@ function toPercent(nrandx, factor, percentage) {
     percentage = Math.round(100 * factor / nrandx);
 }
 
-function calcResults() {
+function displayResults() {
     var a = 0;
     $('#nrand').html(++a);
     $('#treatA').html(++a);
