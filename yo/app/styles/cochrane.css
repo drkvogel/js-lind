@@ -7,7 +7,11 @@ body {
 .hideable {
   color: #00F
 }
-  
+
+#summaryNext {
+  padding-bottom: 10px;
+}
+
 a:link {  color: #003366}
 a:visited {  color: #003366}
 a:hover {  text-decoration: none}
