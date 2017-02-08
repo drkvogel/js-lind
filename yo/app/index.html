@@ -135,9 +135,15 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>
+                      <td id="summary">
                         <h4 align="center"><span id="nrand"></span> patients were randomised,<br>
                         <span id="treatA"></span> to treatment A, <span id="treatB"></span> to treatment B:</h4>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td id="summaryNext" class="hideable">
+                        <div align="center"><span id="nrandNext"></span> patients were randomised,<br>
+                        <span id="treatANext"></span> to treatment A, <span id="treatBNext"></span> to treatment B:</div>
                       </td>
                     </tr>
                   </tbody>
@@ -148,374 +154,200 @@
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td align="right">Treatment A</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" name="n_trt_a1">&nbsp;</td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
                       <td align="right">Treatment B</td>
-                      <td name="n_trt_b1">&nbsp;</td>
-                      <td>
-                        <div align="right"></div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td align="right">(total: <span id="totalA"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="heading hideable" style="visibility:hidden">
-                        <font color="#0000FF">(total=<span id="totalANext"></span>)</font>
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="heading hideable" style="visibility:hidden">(total=<span id="totalANext"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right">(total: <span id="totalB"></span>)</td>
-                      <td name="n_trt_b2">&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF" class="heading hideable" style="visibility:hidden">(total=<span id="totalBNext"></span>)</font>
-                        </div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="heading hideable" style="visibility:hidden">(total=<span id="totalBNext"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td align="right">number (%)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" name="n_trt_a3">
-                        <font color="#0000FF"></font>
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
                       <td align="right">number (%)</td>
-                      <td name="n_trt_b3">&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <font color="#0000FF"></font>
-                      </td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
-                      <td>&nbsp;</td>
+                      <td colspan="10">&nbsp;</td>
                     </tr>
                     <tr>
                       <td colspan="2"><b>Duration of health problem</b></td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td><font color="#0000FF"></font></td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td><div align="right"><font color="#0000FF"></font></div></td>
-                      <td>&nbsp;</td>
+                      <td colspan="8">&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>Long term</td>
                       <td align="right"><span id="t1f1s1"></span> (<span id="t1f1s1pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="duration hideable" style="visibility:hidden">
-                        <font color="#0000FF"><span id="t1f1s1next"></span> (<span id="t1f1s1nextpc"></span>)</font>
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="duration hideable" style="visibility:hidden"> <span id="t1f1s1next"></span> (<span id="t1f1s1nextpc"></span>) </td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f1s1"></span> (<span id="t2f1s1pc"></span>)</td>
-                      <td name="n_dur_b1">&nbsp;</td>
-                      <td>
-                        <div align="right" class="duration hideable" style="visibility:hidden"><span id="t2f1s1next"></span> (<span id="t2f1s1nextpc"></span>)</div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="duration hideable" style="visibility:hidden"><span id="t2f1s1next"></span> (<span id="t2f1s1nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>More recent</td>
                       <td align="right"><span id="t1f1s2"></span> (<span id="t1f1s2pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="duration hideable" style="visibility:hidden">
-                        <font color="#0000FF"><span id="t1f1s2next"></span> (<span id="t1f1s2nextpc"></span>)</font>
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="duration hideable" style="visibility:hidden"><span id="t1f1s2next"></span>(<span id="t1f1s2nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f1s2"></span> (<span id="t2f1s2pc"></span>)</td>
-                      <td name="n_dur_b2">&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF" class="duration hideable" style="visibility:hidden"><span id="t2f1s2next"></span> (<span id="t2f1s2nextpc"></span>)</font>
-                        </div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="duration hideable" style="visibility:hidden"><span id="t2f1s2next"></span> (<span id="t2f1s2nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <font color="#0000FF"></font>
-                      </td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
-                      <td>&nbsp;</td>
+                      <td colspan="10">&nbsp;</td>
                     </tr>
                     <tr>
                       <td colspan="2"><b>Severity of health problem</b></td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <font color="#0000FF"></font>
-                      </td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
-                      <td>&nbsp;</td>
+                      <td colspan="8">&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>Mild</td>
                       <td align="right"><span id="t1f2s1"></span> (<span id="t1f2s1pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden">
-                        <font color="#0000FF"><span id="t1f2s1next"></span> (<span id="t1f2s1nextpc"></span>)</font>
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="sev hideable" style="visibility:hidden" ><span id="t1f2s1next"></span> (<span id="t1f2s1nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f2s1"></span> (<span id="t2f2s1pc"></span>)</td>
-                      <td name="n_sev_b1">&nbsp;</td>
-                      <td>
-                        <div align="right" class="sev hideable" style="visibility:hidden"><span id="t2f2s1next"></span> (<span id="t2f2s1nextpc"></span>)</div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="sev hideable" style="visibility:hidden"><span id="t2f2s1next"></span> (<span id="t2f2s1nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>Moderate</td>
                       <td align="right"><span id="t1f2s2"></span> (<span id="t1f2s2pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden">
-                        <span id="t1f2s2next"></span> (<span id="t1f2s2nextpc"></span>)
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="sev hideable" style="visibility:hidden"><span id="t1f2s2next"></span> (<span id="t1f2s2nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f2s2"></span> (<span id="t2f2s2pc"></span>)</td>
-                      <td name="n_sev_b2">&nbsp;</td>
-                      <td>
-                        <div align="right" class="sev hideable" style="visibility:hidden"><span id="t2f2s2next"></span> (<span id="t2f2s2nextpc"></span>)</div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="sev hideable" style="visibility:hidden"><span id="t2f2s2next"></span> (<span id="t2f2s2nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>Severe</td>
                       <td align="right"><span id="t1f2s3"></span> (<span id="t1f2s3pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden">
-                        <span id="t1f2s3next"></span> (<span id="t1f2s3nextpc"></span>)
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="sev hideable" style="visibility:hidden"> <span id="t1f2s3next"></span> (<span id="t1f2s3nextpc"></span>)</td>
                       <td align="right">&nbsp;</td>
                       <td align="right"><span id="t2f2s3"></span> (<span id="t2f2s3pc"></span>)</td>
                       <td name="n_sev_b3">&nbsp;</td>
-                      <td>
-                        <div align="right" class="sev hideable" style="visibility:hidden"><span id="t2f2s3next"></span> (<span id="t2f2s3nextpc"></span>)</div>
-                      </td>
+                      <td align="right" class="sev hideable" style="visibility:hidden"><span id="t2f2s3next"></span> (<span id="t2f2s3nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <font color="#0000FF"></font>
-                      </td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
-                      <td>&nbsp;</td>
+                      <td colspan="10">&nbsp;</td>
                     </tr>
                     <tr>
                       <td colspan="2"><b>Age, in years</b></td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <font color="#0000FF"></font>
-                      </td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
-                      <td>&nbsp;</td>
+                      <td colspan="8">&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>Under 15</td>
                       <td align="right"><span id="t1f3s1"></span> (<span id="t1f3s1pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden">
-                        <span id="t1f3s1next"></span> (<span id="t1f3s1nextpc"></span>)
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="age hideable" style="visibility:hidden"> <span id="t1f3s1next"></span> (<span id="t1f3s1nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f3s1"></span> (<span id="t2f3s1pc"></span>)</td>
-                      <td name="n_age_b1">&nbsp;</td>
-                      <td>
-                        <div align="right" class="age hideable" style="visibility:hidden"><span id="t2f3s1next"></span> (<span id="t2f3s1nextpc"></span>)</div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="age hideable" style="visibility:hidden"><span id="t2f3s1next"></span> (<span id="t2f3s1nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>15-34</td>
                       <td align="right"><span id="t1f3s2"></span> (<span id="t1f3s2pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden">
-                        <span id="t1f3s2next"></span> (<span id="t1f3s2nextpc"></span>)
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="age hideable" style="visibility:hidden"> <span id="t1f3s2next"></span> (<span id="t1f3s2nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f3s2"></span> (<span id="t2f3s2pc"></span>)</td>
-                      <td name="n_age_b2">&nbsp;</td>
-                      <td>
-                        <div align="right" class="age hideable" style="visibility:hidden"><span id="t2f3s2next"></span> (<span id="t2f3s2nextpc"></span>)</div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="age hideable" style="visibility:hidden"><span id="t2f3s2next"></span> (<span id="t2f3s2nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>35-64</td>
                       <td align="right"><span id="t1f3s3"></span> (<span id="t1f3s3pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden">
-                        <span id="t1f3s3next"></span> (<span id="t1f3s3nextpc"></span>)
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="age hideable" style="visibility:hidden"> <span id="t1f3s3next"></span> (<span id="t1f3s3nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f3s3"></span> (<span id="t2f3s3pc"></span>)</td>
-                      <td name="n_age_b3">&nbsp;</td>
-                      <td>
-                        <div align="right" class="age hideable" style="visibility:hidden"><span id="t2f3s3next"></span> (<span id="t2f3s3nextpc"></span>)</div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="age hideable" style="visibility:hidden"><span id="t2f3s3next"></span> (<span id="t2f3s3nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>65 &amp; older</td>
                       <td align="right"><span id="t1f3s4"></span> (<span id="t1f3s4pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden">
-                        <span id="t1f3s4next"></span> (<span id="t1f3s4nextpc"></span>)
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="age hideable" style="visibility:hidden"> <span id="t1f3s4next"></span> (<span id="t1f3s4nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f3s4"></span> (<span id="t2f3s4pc"></span>)</td>
-                      <td name="n_age_b4">&nbsp;</td>
-                      <td>
-                        <div align="right" class="age hideable" style="visibility:hidden"><span id="t2f3s4next"></span> (<span id="t2f3s4nextpc"></span>)</div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="age hideable" style="visibility:hidden"><span id="t2f3s4next"></span> (<span id="t2f3s4nextpc"></span>)</td>
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <font color="#0000FF"></font>
-                      </td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
-                      <td>&nbsp;</td>
+                      <td colspan="10">&nbsp;</td>
                     </tr>
                     <tr>
                       <td colspan="2"><b>Condition: Very anxious?</b></td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <font color="#0000FF"></font>
-                      </td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>
-                        <div align="right">
-                          <font color="#0000FF"></font>
-                        </div>
-                      </td>
-                      <td>&nbsp;</td>
+                      <td colspan="8">&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>Yes</td>
                       <td align="right"><span id="t1f4s1"></span> (<span id="t1f4s1pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="cond hideable" style="visibility:hidden">
-                        <span id="t1f4s1next"></span> (<span id="t1f4s1nextpc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right"><span id="t2f4s1"></span> (<span id="t2f4s1"></span>)</td>
-                      <td align="right" name="n_cnd_b1">&nbsp;</td>
-                      <td align="right">
-                        <div align="right" class="cond hideable" style="visibility:hidden"><span id="t2f4s1next"></span> (<span id="t2f4s1nextpc"></span>)</div>
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="cond hideable" style="visibility:hidden"> <span id="t1f4s1next"></span> (<span id="t1f4s1nextpc"></span>)</td>
+                      <td>&nbsp;</td>
+                      <td align="right"><span id="t2f4s1"></span> (<span id="t2f4s1pc"></span>)</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="cond hideable" style="visibility:hidden"><span id="t2f4s1next"></span> (<span id="t2f4s1nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td>No</td>
                       <td align="right"><span id="t1f4s2"></span> (<span id="t1f4s2pc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right" class="cond hideable" style="visibility:hidden">
-                        <span id="t1f4s2next"></span> (<span id="t1f4s2nextpc"></span>)
-                      </td>
-                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="cond hideable" style="visibility:hidden"> <span id="t1f4s2next"></span> (<span id="t1f4s2nextpc"></span>)</td>
+                      <td>&nbsp;</td>
                       <td align="right"><span id="t2f4s2"></span> (<span id="t2f4s2pc"></span>)</td>
-                      <td align="right" name="n_cnd_b2">&nbsp;</td>
-                      <td align="right">
-                        <div align="right" class="cond hideable" style="visibility:hidden"><span id="t2f4s2next"></span> (<span id="t2f4s2nextpc"></span>)</div>
-                      </td>
+                      <td>&nbsp;</td>
+                      <td align="right" class="cond hideable" style="visibility:hidden"><span id="t2f4s2next"></span> (<span id="t2f4s2nextpc"></span>)</td>
                       <td align="right">&nbsp;</td>
                     </tr>
                     <tr>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
+                      <td colspan="10">&nbsp;</td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
