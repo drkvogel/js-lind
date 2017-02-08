@@ -123,7 +123,8 @@ function show5() { $(".age").visible(); setTimeout(show6, 1000); }
 function show4() { $(".sev").visible(); setTimeout(show5, 1000); }
 function show3() { $(".duration").visible(); setTimeout(show4, 1000); }
 function show2() { $(".heading").visible(); setTimeout(show3, 1000); }
-function show1() { setTimeout(show2, 1000); }
+function show1a() { $("#summaryNext").show(); setTimeout(show2, 1000); }
+function show1() { setTimeout(show1a, 1000); }
 
 function hideNext() {
     $("#cond").invisible();
@@ -131,6 +132,7 @@ function hideNext() {
     $("#sev").invisible();
     $("#duration").invisible();
     $(".heading").invisible();
+    $("#summaryNext").hide();
 }
 
 function simplerand() { // Takes in nrand, iform & propx?
@@ -243,10 +245,13 @@ function toPercent(nrandx, factor, percentage) {
 }
 
 function calcResults() {
-    var a = 0; 
+    var a = 0;
     $('#nrand').html(++a);
     $('#treatA').html(++a);
     $('#treatB').html(++a);
+    $('#nrandNext').html(++a);
+    $('#treatANext').html(++a);
+    $('#treatBNext').html(++a);
     $('#totalA').html(++a);
     $('#totalANext').html(++a);
     $('#totalB').html(++a);
@@ -328,7 +333,7 @@ function calcResults() {
     $('#t1f4s1next').html(++a);
     $('#t1f4s1nextpc').html(++a);
     $('#t2f4s1').html(++a);
-    $('#t2f4s1').html(++a);
+    $('#t2f4s1pc').html(++a);
     $('#t2f4s1next').html(++a);
     $('#t2f4s1nextpc').html(++a);
     $('#t1f4s2').html(++a);
