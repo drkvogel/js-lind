@@ -1,9 +1,7 @@
 
 # JS Lind
 
-
-
-
+JavaScript version of randomisation demo for the James Lind Library website.
 
     * Assign to "Duration of health problem:"
         Long term (30% probability)
@@ -20,3 +18,4 @@
     * Assign to "Condition: Very anxious?"
         Yes (5% probability)
         No (95% probability)
+
