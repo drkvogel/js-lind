@@ -1,11 +1,6 @@
 console.log('Ready...');
 
-var stage = "start", nrand;
-
-
-
-var nranda, nrandb;
-var errorNrandRec = "<p><font color=\"red\">*** Number of patients must be between 0 and 10000 ***</font></p>\n";
+var stage = "start", nrand = 0, nranda = 0, nrandb = 0, nrandNext = 0, treatANext = 0, treatBNext = 0;
 
 // gets NRAND random numbers between 0.0 & 1.0 for each of the 4 factor groups FACT1, FACT2, FACT3 & FACTX,
 // to determine the distributions between 2 theoretical treatment groups, treatment A & treatment B
@@ -25,17 +20,6 @@ $(function () {
     });
 });
 
-function makeBigger() {
-    var next = nrand * 10;
-    if (next > 100000) {
-        alert('Number of patients must be between 0 and 100,000');
-    } else {
-        nrand = next;
-        show1();
-        console.log('makeBigger(): nrand is now: ' + nrand);
-    }
-}
-
 // function currentPage() {
 //     return pages[current]; //console.log('currentPage[' + current + ']:' + obj(pages[current]));
 // }
@@ -46,12 +30,6 @@ function showPage(id) {
     currentPage = id;
     $(id).show();
 }
-
-// function begin() {
-//     nrand = 0;
-//     stage = "intro";
-//     //alert('begin!');
-// }
 
 // 10 times bigger values are hidden using "visibility: hidden" which preserves the onscreen space for an element
 // as opposed to "display: none" which causes the element not to be present at all, which could break the layout
@@ -75,69 +53,86 @@ function show5() { $(".age").visible(); setTimeout(show6, 1000); }
 function show4() { $(".sev").visible(); setTimeout(show5, 1000); }
 function show3() { $(".duration").visible(); setTimeout(show4, 1000); }
 function show2() { $(".heading").visible(); setTimeout(show3, 1000); }
-function show1a() { $("#summaryNext").show(); setTimeout(show2, 1000); }
+function show1a() { $("#summaryNext").show(); $("#summaryNext").visible(); setTimeout(show2, 1000); }
 function show1() { setTimeout(show1a, 1000); }
 
 function hideNext() {
-    $("#cond").invisible();
-    $("#age").invisible();
-    $("#sev").invisible();
-    $("#duration").invisible();
-    $(".heading").invisible();
-    $("#summaryNext").hide();
+    $(".hideable").invisible();
+    $("#summaryNext").hide(); // remove from layout as well
 }
 
 function begin() { // Takes in nrand, iform & propx?
-    console.log('simplerand(): got the number: ' + enteredNumber);
     if (stage === "start") {
         var enteredNumber = parseInt($('#nrandrec').val(), 10);
+        console.log('simplerand(): got the number: ' + enteredNumber);
         if (isNaN(enteredNumber) || enteredNumber < 0 || enteredNumber > 10000) {
             alert('Please enter a number between 0 and 10,000'); // alert('Doh!');
             return;
         } else {
             nrand = enteredNumber;
+            //base = new Factors();
+            simplerand(nrand); // , base);
+            fillBase(); // (base);
             hideNext(); // make sure "10 times bigger" values are hidden to begin with
-            simplerand();
-            //calcResults();
-            $('#intro').hide();
-            $('#results').show();
+            $('#intro').hide();     // intro "page"
+            $('#results').show();   // results "page"
             //show1();
+            //displayResults();
         }
     }
 }
 
-function simplerand() {
-    // FORTRAN version used a 2d array of which which treatments were randomised into which factors
-    // use a JS object instead
-    var factors = { // each strata for each factor has a tuple for a count of patients randomised to treatment A or B
-        f1: { // duration
-            s1: [0, 0],
-            s2: [0, 0]
-        },
-        f2: { // severity
-            s1: [0, 0],
-            s2: [0, 0],
-            s3: [0, 0]
-        },
-        f3: { // age
-            s1: [0, 0],
-            s2: [0, 0],
-            s3: [0, 0],
-            s4: [0, 0]
-        },
-        f4: { // anxious
-            s1: [0, 0],
-            s2: [0, 0]
-        }
-    };    
+function makeBigger() {
+    hideNext();
+    var next = nrand * 10;
+    if (next > 100000) {
+        alert('Number of patients must be between 0 and 100,000');
+    } else {
+        simplerand(next);
+        fillNext();
+        show1();
+        console.log('makeBigger(): nrand is now: ' + next);
+    }
+}
 
+//var Factors = function() { // each strata for each factor has a tuple for a count of patients randomised to treatment A or B
+var factors = { // each strata for each factor has a tuple for a count of patients randomised to treatment A or B
+    f1: { // duration
+        s1: [0, 0],
+        s2: [0, 0]
+    },
+    f2: { // severity
+        s1: [0, 0],
+        s2: [0, 0],
+        s3: [0, 0]
+    },
+    f3: { // age
+        s1: [0, 0],
+        s2: [0, 0],
+        s3: [0, 0],
+        s4: [0, 0]
+    },
+    f4: { // anxious
+        s1: [0, 0],
+        s2: [0, 0]
+    }
+};   
+
+    // clear factors?
+    // use new?
+
+function simplerand(nrand) { // , factors) {
+    // FORTRAN version used a 2d array of which which treatments were randomised into which factors - use a JS object instead
+
+    //var base = new Factors();
     console.log(factors);
+    console.log('nrand: ' + nrand + ', nranda: ' + nranda);
     for (var i=1; i < nrand; i++) {         // do i=1,nrand
         var treatment;                      // treatment dimension?
         var randno = Math.random();         // flip a coin
         if (randno < 0.5) {                 // treatment A
             treatment = 0;                  // is an index into an array, remember, so 0-indexed
-            nranda += 1;
+            window.nranda += 1;
         } else {                            // treatment B
             treatment = 1;
             nrandb += 1;
@@ -184,10 +179,11 @@ function simplerand() {
         }
     } // end do
     console.log(factors);
-    // now convert numbers to percentages...
+    console.log('nrand: ' + nrand + ', nranda: ' + nranda);
+
 
     // and display
-    displayResults();
+    fillBase();
 }
 
 // Fortran: "convert to percentages and assign array values to variables to be passed back to main program"
@@ -199,106 +195,131 @@ function toPercent(nrandx, factor, percentage) {
     percentage = Math.round(100 * factor / nrandx);
 }
 
-function displayResults() {
-    var a = 0;
-    $('#nrand').html(++a);
-    $('#treatA').html(++a);
-    $('#treatB').html(++a);
-    $('#nrandNext').html(++a);
-    $('#treatANext').html(++a);
-    $('#treatBNext').html(++a);
-    $('#totalA').html(++a);
-    $('#totalANext').html(++a);
-    $('#totalB').html(++a);
-    $('#totalBNext').html(++a);
-    $('#t1f1s1').html(++a);
-    $('#t1f1s1pc').html(++a);
-    $('#t1f1s1next').html(++a);
-    $('#t1f1s1nextpc').html(++a);
+/*
+factors.f1.s1[treatment]
+factors.f1.s2[treatment]
+factors.f2.s1[treatment]
+factors.f2.s2[treatment]
+factors.f2.s3[treatment]
+factors.f3.s1[treatment]
+factors.f3.s2[treatment]
+factors.f3.s3[treatment]
+factors.f3.s4[treatment]
+factors.f4.s1[treatment]
+factors.f4.s2[treatment]
+*/
+
+// var stage = "start", nrand, nranda, nrandb, nrandNext, treatANext, treatBNext;
+//var errorNrandRec = "<p><font color=\"red\">*** Number of patients must be between 0 and 10000 ***</font></p>\n";
+
+var a = 0; // dev
+
+function fillBase(factors) {
+    $('#nrand').html(window.nrand);
+    $('#treatA').html(window.nranda);
+    $('#treatB').html(window.nrandb);
+    $('#totalA').html(window.nranda);
+    $('#totalB').html(window.nrandb);
+    $('#t1f1s1').html(window.factors.f1.s1[0]); // (factors.f1.s1[0]);
+    // $('#t1f1s1').html(++a); // (factors.f1.s1[0]);
+    $('#t1f1s1pc').html(toPercent());
     $('#t2f1s1').html(++a);
-    $('#t2f1s1pc').html(++a);
-    $('#t2f1s1next').html(++a);
-    $('#t2f1s1nextpc').html(++a);
+    $('#t2f1s1pc').html(toPercent());
     $('#t1f1s2').html(++a);
-    $('#t1f1s2pc').html(++a);
-    $('#t1f1s2next').html(++a);
-    $('#t1f1s2nextpc').html(++a);
+    $('#t1f1s2pc').html(toPercent());
     $('#t2f1s2').html(++a);
-    $('#t2f1s2pc').html(++a);
-    $('#t2f1s2next').html(++a);
-    $('#t2f1s2nextpc').html(++a);
+    $('#t2f1s2pc').html(toPercent());
     $('#t1f2s1').html(++a);
-    $('#t1f2s1pc').html(++a);
-    $('#t1f2s1next').html(++a);
-    $('#t1f2s1nextpc').html(++a);
+    $('#t1f2s1pc').html(toPercent());
     $('#t2f2s1').html(++a);
-    $('#t2f2s1pc').html(++a);
-    $('#t2f2s1next').html(++a);
-    $('#t2f2s1nextpc').html(++a);
+    $('#t2f2s1pc').html(toPercent());
     $('#t1f2s2').html(++a);
-    $('#t1f2s2pc').html(++a);
-    $('#t1f2s2next').html(++a);
-    $('#t1f2s2nextpc').html(++a);
+    $('#t1f2s2pc').html(toPercent());
     $('#t2f2s2').html(++a);
-    $('#t2f2s2pc').html(++a);
-    $('#t2f2s2next').html(++a);
-    $('#t2f2s2nextpc').html(++a);
+    $('#t2f2s2pc').html(toPercent());
     $('#t1f2s3').html(++a);
-    $('#t1f2s3pc').html(++a);
-    $('#t1f2s3next').html(++a);
-    $('#t1f2s3nextpc').html(++a);
+    $('#t1f2s3pc').html(toPercent());
     $('#t2f2s3').html(++a);
-    $('#t2f2s3pc').html(++a);
-    $('#t2f2s3next').html(++a);
-    $('#t2f2s3nextpc').html(++a);
+    $('#t2f2s3pc').html(toPercent());
     $('#t1f3s1').html(++a);
-    $('#t1f3s1pc').html(++a);
-    $('#t1f3s1next').html(++a);
-    $('#t1f3s1nextpc').html(++a);
+    $('#t1f3s1pc').html(toPercent());
     $('#t2f3s1').html(++a);
-    $('#t2f3s1pc').html(++a);
-    $('#t2f3s1next').html(++a);
-    $('#t2f3s1nextpc').html(++a);
+    $('#t2f3s1pc').html(toPercent());
     $('#t1f3s2').html(++a);
-    $('#t1f3s2pc').html(++a);
-    $('#t1f3s2next').html(++a);
-    $('#t1f3s2nextpc').html(++a);
+    $('#t1f3s2pc').html(toPercent());
     $('#t2f3s2').html(++a);
-    $('#t2f3s2pc').html(++a);
-    $('#t2f3s2next').html(++a);
-    $('#t2f3s2nextpc').html(++a);
+    $('#t2f3s2pc').html(toPercent());
     $('#t1f3s3').html(++a);
-    $('#t1f3s3pc').html(++a);
-    $('#t1f3s3next').html(++a);
-    $('#t1f3s3nextpc').html(++a);
+    $('#t1f3s3pc').html(toPercent());
     $('#t2f3s3').html(++a);
-    $('#t2f3s3pc').html(++a);
-    $('#t2f3s3next').html(++a);
-    $('#t2f3s3nextpc').html(++a);
+    $('#t2f3s3pc').html(toPercent());
     $('#t1f3s4').html(++a);
-    $('#t1f3s4pc').html(++a);
-    $('#t1f3s4next').html(++a);
-    $('#t1f3s4nextpc').html(++a);
+    $('#t1f3s4pc').html(toPercent());
     $('#t2f3s4').html(++a);
-    $('#t2f3s4pc').html(++a);
-    $('#t2f3s4next').html(++a);
-    $('#t2f3s4nextpc').html(++a);
+    $('#t2f3s4pc').html(toPercent());
     $('#t1f4s1').html(++a);
-    $('#t1f4s1pc').html(++a);
-    $('#t1f4s1next').html(++a);
-    $('#t1f4s1nextpc').html(++a);
+    $('#t1f4s1pc').html(toPercent());
     $('#t2f4s1').html(++a);
-    $('#t2f4s1pc').html(++a);
-    $('#t2f4s1next').html(++a);
-    $('#t2f4s1nextpc').html(++a);
+    $('#t2f4s1pc').html(toPercent());
     $('#t1f4s2').html(++a);
-    $('#t1f4s2pc').html(++a);
-    $('#t1f4s2next').html(++a);
-    $('#t1f4s2nextpc').html(++a);
+    $('#t1f4s2pc').html(toPercent());
     $('#t2f4s2').html(++a);
-    $('#t2f4s2pc').html(++a);
+    $('#t2f4s2pc').html(toPercent());
+}
+
+function fillNext() {
+    a *= 10;
+    console.log("treatANext: " + treatANext);
+    $('#nrandNext').html(nrandNext);
+    $('#treatANext').html(treatANext);
+    $('#treatBNext').html(treatBNext);
+    $('#totalANext').html(treatANext);
+    $('#totalBNext').html(treatBNext);
+
+    $('#t1f1s1next').html(++a);
+    $('#t1f1s1nextpc').html(toPercent());
+    $('#t2f1s1next').html(++a);
+    $('#t2f1s1nextpc').html(toPercent());
+    $('#t1f1s2next').html(++a);
+    $('#t1f1s2nextpc').html(toPercent());
+    $('#t2f1s2next').html(++a);
+    $('#t2f1s2nextpc').html(toPercent());
+    $('#t1f2s1next').html(++a);
+    $('#t1f2s1nextpc').html(toPercent());
+    $('#t2f2s1next').html(++a);
+    $('#t2f2s1nextpc').html(toPercent());
+    $('#t1f2s2next').html(++a);
+    $('#t1f2s2nextpc').html(toPercent());
+    $('#t2f2s2next').html(++a);
+    $('#t2f2s2nextpc').html(toPercent());
+    $('#t1f2s3next').html(++a);
+    $('#t1f2s3nextpc').html(toPercent());
+    $('#t2f2s3next').html(++a);
+    $('#t2f2s3nextpc').html(toPercent());
+    $('#t1f3s1next').html(++a);
+    $('#t1f3s1nextpc').html(toPercent());
+    $('#t2f3s1next').html(++a);
+    $('#t2f3s1nextpc').html(toPercent());
+    $('#t1f3s2next').html(++a);
+    $('#t1f3s2nextpc').html(toPercent());
+    $('#t2f3s2next').html(++a);
+    $('#t2f3s2nextpc').html(toPercent());
+    $('#t1f3s3next').html(++a);
+    $('#t1f3s3nextpc').html(toPercent());
+    $('#t2f3s3next').html(++a);
+    $('#t2f3s3nextpc').html(toPercent());
+    $('#t1f3s4next').html(++a);
+    $('#t1f3s4nextpc').html(toPercent());
+    $('#t2f3s4next').html(++a);
+    $('#t2f3s4nextpc').html(toPercent());
+    $('#t1f4s1next').html(++a);
+    $('#t1f4s1nextpc').html(toPercent());
+    $('#t2f4s1next').html(++a);
+    $('#t2f4s1nextpc').html(toPercent());
+    $('#t1f4s2next').html(++a);
+    $('#t1f4s2nextpc').html(toPercent());
     $('#t2f4s2next').html(++a);
-    $('#t2f4s2nextpc').html(++a);
+    $('#t2f4s2nextpc').html(toPercent());
 }
 
 if (nranda === 0) {
