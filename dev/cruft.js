@@ -26,6 +26,37 @@ function Show6() { Show("cond"); }
 // var errorPercent    = "<tr><td>&nbsp;</td><td><span><font color=\"red\">&gt;&gt;&gt; Percentage must be between 0 and 100</font></td></tr></span>\n";
 // var errorNrandUnrec = "<tr><td>&nbsp;</td><td><span><font color=\"red\">*** Number of patients must be between 0 and 10000 ***</font></td></tr></span>\n";
 
+
+
+    //var i, nrand, iform, seed, nranda, nrandb, treatment, propx;
+    // fact1_1a,fact1_1b,fact1_2a,fact1_2b,fact2_1a, fact2_1b,fact2_2a,fact2_2b,fact2_3a,fact2_3b, fact3_1a,fact3_1b,fact3_2a,fact3_2b,fact3_3a, fact3_3b,fact3_4a,fact3_4b,factx_1a,factx_1b, factx_2a,factx_2b,fact1_1an,fact1_1bn,fact1_2an, fact1_2bn,fact2_1an,fact2_1bn,fact2_2an,fact2_2bn, fact2_3an,fact2_3bn,fact3_1an,fact3_1bn, fact3_2an,fact3_2bn,fact3_3an,fact3_3bn,fact3_4an, fact3_4bn,factx_1an,factx_1bn,factx_2an,factx_2bn
+    // real ntoss, randno, propxpc
+
+    // what's this? declaring and initialising 2D arrays
+    // integer fact1(2,2)/4*0/,fact2(3,2)/6*0/,fact3(4,2)/8*0/, factx(2,2)/4*0/ // declaring array dimensions
+    // fact1(1,1)=0 fact1(1,2)=0 fact1(2,1)=0 fact1(2,2)=0 fact2(1,1)=0 fact2(1,2)=0 fact2(2,1)=0 fact2(2,2)=0 fact2(3,1)=0 fact2(3,2)=0 fact3(1,1)=0 fact3(1,2)=0 fact3(2,1)=0 fact3(2,2)=0 fact3(3,1)=0 fact3(3,2)=0 fact3(4,1)=0 fact3(4,2)=0 factx(1,1)=0 factx(1,2)=0 factx(2,1)=0 factx(2,2)=0
+    // in JS there are technically no multidimensional arrays, but you can have an array of arrays
+    // fact1[][] etc
+
+    // Fortran version has individual variables for each element in each array in order to pass back to C program
+    // initialise vars fact1_1a=0 fact1_1b=0 fact1_2a=0 fact1_2b=0 fact2_1a=0 fact2_1b=0 fact2_2a=0 fact2_2b=0 fact2_3a=0 fact2_3b=0 fact3_1a=0 fact3_1b=0 fact3_2a=0 fact3_2b=0 fact3_3a=0 fact3_3b=0 fact3_4a=0 fact3_4b=0 factx_1a=0 factx_1b=0 factx_2a=0 factx_2b=0 fact1_1an=0 fact1_1bn=0 fact1_2an=0 fact1_2bn=0 fact2_1an=0 fact2_1bn=0 fact2_2an=0 fact2_2bn=0 fact2_3an=0 fact2_3bn=0 fact3_1an=0 fact3_1bn=0 fact3_2an=0 fact3_2bn=0 fact3_3an=0 fact3_3bn=0 fact3_4an=0 fact3_4bn=0 factx_1an=0 factx_1bn=0 factx_2an=0 factx_2bn=0
+    // nranda=0 nrandb=0
+
+        // with variable factor, maybe not needed
+        // propxpc=propx/100.0 //??
+        //if (iform === 1) {
+        // ... (as above)
+        // } else {
+        //     if (randno < propxpc) {
+        //         //factx(1,treatment)=factx(1,treatment)+1
+        //     } else {
+        //         factx(2,treatment)=factx(2,treatment)+1
+        //     }
+        // }
+
+
+    console.log(factors); //alert(factors); // doesn't print whole object
+
 /* simplerand2_f.f from jameslind.git
 
       subroutine simplerand2(seed,iform,nrand,propx,nranda,nrandb, 
