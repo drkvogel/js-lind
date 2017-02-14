@@ -19,3 +19,8 @@ JavaScript version of randomisation demo for the James Lind Library website.
         Yes (5% probability)
         No (95% probability)
 
+## todo
+
+percentages not shown
+"back to beginning" doesn't work
+after "Number of patients must be between 0 and 100,000" out-of-range alert, "next" values disappear
