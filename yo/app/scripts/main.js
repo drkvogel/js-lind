@@ -35,7 +35,7 @@ function showPage(id) {
     };
 }(jQuery));
 
-var PAUSE = 100;
+var PAUSE = 500;
 
 function show6() { $(".cond").visible(); }
 function show5() { $(".age").visible(); setTimeout(show6, PAUSE); }
