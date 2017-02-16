@@ -1,4 +1,8 @@
 console.log('Ready...');
+var MAXSTARTRAND = 10000, MAXENDRAND = 100000;
+var PAUSE = 500;
+var nrand = 0;
+var currentPage = '#intro';
 
 // handle enter key on input
 $(function () {
@@ -10,8 +14,6 @@ $(function () {
     });
 });
 
-var nrand = 0;
-var currentPage = '#intro';
 
 function showPage(id) {
     $(currentPage).hide();
@@ -35,7 +37,6 @@ function showPage(id) {
     };
 }(jQuery));
 
-var PAUSE = 500;
 
 function show6() { $(".cond").visible(); }
 function show5() { $(".age").visible(); setTimeout(show6, PAUSE); }
@@ -52,8 +53,6 @@ function hideNext() {
 function showIntro() {
     showPage('#intro');
 }
-
-var MAXSTARTRAND = 100000, MAXENDRAND = 1000000;
 
 function doRand() {                 // get a starting number of patients and randomise
     var enteredNumber = parseInt($('#nrandrec').val(), 10);
@@ -77,9 +76,9 @@ function makeBigger(nrand) {        // multiply number of patients by 10 and ran
         alert('Number of patients must be between 0 and ' + MAXENDRAND);
     } else {
         window.nrand = nrandNext;   // global vars bad
-        console.log('makeBigger(): nrand is now: ' + nrand);
+        console.log('makeBigger(): nrand is now: ' + window.nrand);
         var factors = new Factors();
-        factors.randomise(nrandNext);
+        factors.randomise(window.nrand);
         hideNext();
         fillNext(factors);
         show1();
