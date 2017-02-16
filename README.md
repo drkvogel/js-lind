@@ -21,11 +21,11 @@ Originally commissioned by Sir Iain Chalmers and created by Jim Halsey and Chris
         Yes (5% probability)
         No (95% probability)
 
-## todo
+## do
 
-"back to beginning" doesn't work
 
-after "Number of patients must be between 0 and 100,000" out-of-range alert, "next" values disappear
+
+## defer
 
 could turn function Factors() into var factors = new Array() and make multi-dim - then factor out function fillBase(factors) function fillNext(factors)
 
@@ -38,3 +38,7 @@ use WebPack?
 ## done
 
 percentages not shown
+
+"back to beginning" doesn't work
+
+after "Number of patients must be between 0 and 100,000" out-of-range alert, "next" values disappear
