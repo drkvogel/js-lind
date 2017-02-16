@@ -1,21 +1,16 @@
 console.log('Ready...');
 
-// global vars bad, wrap in IIFE?
-// http://stackoverflow.com/questions/2613310/ive-heard-global-variables-are-bad-what-alternative-solution-should-i-use
-var stage = "start", nrand = 0; //, nranda = 0, nrandb = 0, nrandNext = 0, treatANext = 0, treatBNext = 0;
-
 // handle enter key on input
 $(function () {
+    if (currentPage !== "#intro") return;
     $("#nrandrec").keypress(function (e) {
-        if (e.keyCode == 13) { // enter
-            begin();
+        if (e.keyCode == 13) {  // enter
+            doRand();
         }
     });
 });
 
-// function currentPage() {
-//     return pages[current]; //console.log('currentPage[' + current + ']:' + obj(pages[current]));
-// }
+var nrand = 0;
 var currentPage = '#intro';
 
 function showPage(id) {
@@ -26,8 +21,7 @@ function showPage(id) {
 
 // 10 times bigger values are hidden using "visibility: hidden" which preserves the onscreen space for an element
 // as opposed to "display: none" which causes the element not to be present at all, which could break the layout
-// jQuery hide() and show() change "display", but there is no equivalent for "visibility"
-// so here is a jQuery plugin
+// jQuery hide() and show() change "display", but there is no equivalent for "visibility", so here is a jQuery plugin:
 (function($) { // set visibility with visible() or invisible()
     $.fn.invisible = function() { // fn is an alias to prototype
         return this.each(function() {
@@ -41,49 +35,53 @@ function showPage(id) {
     };
 }(jQuery));
 
+var PAUSE = 100;
+
 function show6() { $(".cond").visible(); }
-function show5() { $(".age").visible(); setTimeout(show6, 1000); }
-function show4() { $(".sev").visible(); setTimeout(show5, 1000); }
-function show3() { $(".duration").visible(); setTimeout(show4, 1000); }
-function show2() { $(".heading").visible(); setTimeout(show3, 1000); }
-function show1a() { $("#summaryNext").show(); $("#summaryNext").visible(); setTimeout(show2, 1000); }
-function show1() { setTimeout(show1a, 1000); }
+function show5() { $(".age").visible(); setTimeout(show6, PAUSE); }
+function show4() { $(".sev").visible(); setTimeout(show5, PAUSE); }
+function show3() { $(".duration").visible(); setTimeout(show4, PAUSE); }
+function show2() { $(".heading").visible(); setTimeout(show3, PAUSE); }
+function show1a() { $("#summaryNext").show(); $("#summaryNext").visible(); setTimeout(show2, PAUSE); }
+function show1() { setTimeout(show1a, PAUSE); }
 
 function hideNext() {
     $(".hideable").invisible();
     $("#summaryNext").hide();       // remove from layout as well
 }
 
-function begin() {                  // Takes in nrand, iform & propx?
-    if (stage === "start") {
-        var enteredNumber = parseInt($('#nrandrec').val(), 10);
-        console.log('simplerand(): got the number: ' + enteredNumber);
-        if (isNaN(enteredNumber) || enteredNumber < 0 || enteredNumber > 10000) {
-            alert('Please enter a number between 0 and 10,000'); // alert('Doh!');
-            return;
-        } else {
-            nrand = enteredNumber;
-            var base = new Factors();
-            base.randomise(nrand);
-            fillBase(base);
-            hideNext();             // make sure "10 times bigger" values are hidden to begin with
-            $('#intro').hide();     // intro "page"
-            $('#results').show();   // results "page"
-        }
+function showIntro() {
+    showPage('#intro');
+}
+
+var MAXSTARTRAND = 100000, MAXENDRAND = 1000000;
+
+function doRand() {                 // get a starting number of patients and randomise
+    var enteredNumber = parseInt($('#nrandrec').val(), 10);
+    console.log('simplerand(): got the number: ' + enteredNumber);
+    if (isNaN(enteredNumber) || enteredNumber < 0 || enteredNumber > MAXSTARTRAND) {
+        alert('Please enter a number between 0 and ' + MAXSTARTRAND); // alert('Doh!');
+        return;
+    } else {
+        nrand = enteredNumber;
+        var base = new Factors();
+        base.randomise(nrand);
+        fillBase(base);
+        hideNext();                 // make sure "10 times bigger" values are hidden to begin with
+        showPage('#results');
     }
 }
 
-function makeBigger(nrand) {
-    hideNext();
-    console.log('makeBigger(): nrand is: ' + window.nrand); // global vars bad
+function makeBigger(nrand) {        // multiply number of patients by 10 and randomise again
     var nrandNext = window.nrand * 10;
-    if (nrandNext > 100000) {
-        alert('Number of patients must be between 0 and 100,000');
+    if (nrandNext > MAXENDRAND) {
+        alert('Number of patients must be between 0 and ' + MAXENDRAND);
     } else {
-        window.nrand = nrandNext;
+        window.nrand = nrandNext;   // global vars bad
         console.log('makeBigger(): nrand is now: ' + nrand);
         var factors = new Factors();
         factors.randomise(nrandNext);
+        hideNext();
         fillNext(factors);
         show1();
     }
@@ -94,7 +92,6 @@ function Factors() {    // each strata for each factor has a tuple for a count o
     this.nrand = 0;
     this.nranda = 0;
     this.nrandb = 0;
-
     this.f1 = {         // duration
         s1: [0, 0],
         s2: [0, 0]
@@ -141,41 +138,41 @@ Factors.prototype.randomise = function(nrand) {
         // factor 1 (duration of health problem): 0.7 long-term; 0.3 recent
         randno = Math.random();
         if (randno < 0.3) {
-            this.f1.s1[treatment]++;     //fact1(1,treatment)=fact1(1,treatment)+1
+            this.f1.s1[treatment]++;
         } else {
-            this.f1.s2[treatment]++;     //fact1(2,treatment)=fact1(2,treatment)+1
+            this.f1.s2[treatment]++;
         }
 
         // factor 2 (severity of health problem) 0.3: mild; 0.45 moderate; 0.25: severe
         randno = Math.random();
         if (randno < 0.3) {
-            this.f2.s1[treatment]++;     //fact2(1,treatment)=fact2(1,treatment)+1
+            this.f2.s1[treatment]++;
         } else if ((randno > 0.3) && (randno < 0.75)) {
-            this.f2.s2[treatment]++;     //fact2(2,treatment)=fact2(2,treatment)+1
+            this.f2.s2[treatment]++;
         } else {
-            this.f2.s3[treatment]++;     //fact2(3,treatment)=fact2(3,treatment)+1
+            this.f2.s3[treatment]++;
         }
 
         // factor 3 (age) 0.2= under 15; 0.25= 14-34 yrs; 0.25= 35-64 yrs; 0.3= 65 & older
         randno = Math.random();
         if (randno < 0.2) {
-            this.f3.s1[treatment]++;     // fact3(1,treatment)=fact3(1,treatment)+1
+            this.f3.s1[treatment]++;
         } else if ((randno > 0.2) && (randno < 0.45)) {
-            this.f3.s2[treatment]++;     //fact3(2,treatment)=fact3(2,treatment)+1
+            this.f3.s2[treatment]++;
         } else if ((randno > 0.45) && (randno < 0.7)) {
-            this.f3.s3[treatment]++;     //fact3(3,treatment)=fact3(3,treatment)+1
+            this.f3.s3[treatment]++;
         } else {
-            this.f3.s4[treatment]++;     //fact3(4,treatment)=fact3(4,treatment)+1
+            this.f3.s4[treatment]++;
         }
 
-        // factor X (was a factor chosen by the user, now defaults to "Very anxious") (default 5%?)
+        // factor X (in earlier versions, was a factor chosen by the user - now defaults to "Very anxious") (default 5%?)
         randno = Math.random();
         if (randno < 0.05) {                // yes, default 5%
-            this.f4.s1[treatment]++;     //factx(1,treatment)=factx(1,treatment)+1
+            this.f4.s1[treatment]++;
         } else {
-            this.f4.s2[treatment]++;     //ffactx(2,treatment)=factx(2,treatment)+1
+            this.f4.s2[treatment]++;
         }
-    } // end do    
+    }
 }
 
 // Fortran: "convert to percentages and assign array values to variables to be passed back to main program"
@@ -188,7 +185,6 @@ function toPercent(nrandx, patients) {
 }
 
 function fillBase(factors) {
-    // $('#nrand').html(window.nrand);
     $('#nrand').html(factors.nrand);
     $('#treatA').html(factors.nranda);
     $('#treatB').html(factors.nrandb);
@@ -296,217 +292,3 @@ function fillNext(factors) {
     $('#f4s2t1next').html(factors.f4.s2[1]);
     $('#f4s2t1nextpc').html(toPercent(factors.nrandb, factors.f4.s2[1]));
 }
-
-// if (nranda === 0) {
-//     // fact1_1a=0
-//     // fact1_1a=0
-// } else {
-//     // fact1_1a = nint(100.0*fact1(1,1)/real(nranda)) // 
-//     // fact1_1a = nint(100.0*fact1(1,1)/real(nranda)) // 
-//     // fact1_1a = nint(100.0*fact1(1,1)/real(nranda)) // 
-//     //fact1_1a = Math.round(100 * fact1(1,1) / nranda)    
-// }
-// //fact1_1an=fact1(1,1)
-
-// if (nrandb === 0) {
-//     // fact1_1b=0
-// } else {
-//     // fact1_1b=nint(100.0*fact1(1,2)/real(nrandb))
-// }
-// // fact1_1bn=fact1(1,2)      
-
-// if (nranda === 0) {
-//     // fact1_2a=0
-// } else {
-//     // fact1_2a=nint(100.0*fact1(2,1)/real(nranda))
-// }
-// //   fact1_2an=fact1(2,1)
-
-// if (nrandb === 0) {
-//     // fact1_2b=0
-// } else {
-//     // fact1_2b=nint(100.0*fact1(2,2)/real(nrandb))
-// }
-// //   fact1_2bn=fact1(2,2)
-
-// if (nranda === 0) {
-//     // fact2_1a=0
-// } else {
-//     // fact2_1a=nint(100.0*fact2(1,1)/real(nranda))
-// }
-// //   fact2_1an=fact2(1,1)
-
-// if (nrandb === 0) {
-//     // fact2_1b=0
-// } else {
-//     // fact2_1b=nint(100.0*fact2(1,2)/real(nrandb))
-// }
-//   fact2_1bn=fact2(1,2)
-
-//       if(nranda.eq.0)then
-//         fact2_2a=0
-//       else
-//         fact2_2a=nint(100.0*fact2(2,1)/real(nranda))
-//       endif
-//       fact2_2an=fact2(2,1)
-
-//       if(nrandb.eq.0)then
-//         fact2_2b=0
-//       else
-//         fact2_2b=nint(100.0*fact2(2,2)/real(nrandb))
-//       endif
-//       fact2_2bn=fact2(2,2)
-
-//       if(nranda.eq.0)then
-//         fact2_3a=0
-//       else
-//         fact2_3a=nint(100.0*fact2(3,1)/real(nranda))
-//       endif
-//       fact2_3an=fact2(3,1)
-
-//       if(nrandb.eq.0)then
-//         fact2_3b=0
-//       else
-//         fact2_3b=nint(100.0*fact2(3,2)/real(nrandb))
-//       endif
-//       fact2_3bn=fact2(3,2)
-
-//       if(nranda.eq.0)then
-//         fact3_1a=0
-//       else
-//         fact3_1a=nint(100.0*fact3(1,1)/real(nranda))
-//       endif
-//       fact3_1an=fact3(1,1)
-
-//       if(nrandb.eq.0)then
-//         fact3_1b=0
-//       else
-//         fact3_1b=nint(100.0*fact3(1,2)/real(nrandb))
-//       endif
-//       fact3_1bn=fact3(1,2)
-
-//       if(nranda.eq.0)then
-//         fact3_2a=0
-//       else
-//         fact3_2a=nint(100.0*fact3(2,1)/real(nranda))
-//       endif
-//       fact3_2an=fact3(2,1)
-
-//       if(nrandb.eq.0)then
-//         fact3_2b=0
-//       else
-//         fact3_2b=nint(100.0*fact3(2,2)/real(nrandb))
-//       endif
-//       fact3_2bn=fact3(2,2)
-
-//       if(nranda.eq.0)then
-//         fact3_3a=0
-//       else
-//         fact3_3a=nint(100.0*fact3(3,1)/real(nranda))
-//       endif
-//       fact3_3an=fact3(3,1)
-
-//       if(nrandb.eq.0)then
-//         fact3_3b=0
-//       else
-//         fact3_3b=nint(100.0*fact3(3,2)/real(nrandb))
-//       endif
-//       fact3_3bn=fact3(3,2)
-
-//       if(nranda.eq.0)then
-//         fact3_4a=0
-//       else
-//         fact3_4a=nint(100.0*fact3(4,1)/real(nranda))
-//       endif
-//       fact3_4an=fact3(4,1)
-
-//       if(nrandb.eq.0)then
-//         fact3_4b=0
-//       else
-//         fact3_4b=nint(100.0*fact3(4,2)/real(nrandb))
-//       endif
-//       fact3_4bn=fact3(4,2)
-
-//       if(nranda.eq.0)then
-//         factx_1a=0
-//       else
-//         factx_1a=nint(100.0*factx(1,1)/real(nranda))
-//       endif
-//       factx_1an=factx(1,1)
-
-//       if(nrandb.eq.0)then
-//         factx_1b=0
-//       else
-//         factx_1b=nint(100.0*factx(1,2)/real(nrandb))
-//       endif
-//       factx_1bn=factx(1,2)
-
-//       if(nranda.eq.0)then
-//         factx_2a=0
-//       else
-//         factx_2a=nint(100.0*factx(2,1)/real(nranda))
-//       endif
-//       factx_2an=factx(2,1)
-
-//       if(nrandb.eq.0)then
-//         factx_2b=0
-//       else
-//         factx_2b=nint(100.0*factx(2,2)/real(nrandb))
-//       endif
-//       factx_2bn=factx(2,2)
-
-// c test
-// c      fact1_1a = propx
-// c      fact1_1b = nint(propxpc)
-// c      fact1_1a=0
-// c      fact1_1b=2
-// c      fact1_2a=3
-// c      fact1_2b=4
-// c      fact2_1a=5
-// c      fact2_1b=6
-// c      fact2_2a=7
-// c      fact2_2b=8
-// c      fact2_3a=9
-// c      fact2_3b=10
-// c      nranda=222
-// c      nrandb=333
-
-/* from C:\Users\cbird\Projects\js-lind\dev\Randomisation results.html
-function Show(ename) {
-	if(document.all) {
-		for(var i = 0; i < document.all.length; ++i) {
-			if(document.all[i].name == ename) {
-				document.all[i].style.visibility ='visible';
-			}
-		}
-	} else {
-		var objs = document.getElementsByName(ename);
-	   	for(var i = 0; i < objs.length; ++i) {
-			objs[i].style.visibility ='visible';
-		}
-	}
-}
-function Show1() { setTimeout("Show2()", 1000); }
-function Show2() { Show("heading"); setTimeout("Show3()", 1000); }
-function Show3() { Show("duration"); setTimeout("Show4()", 1000); }
-function Show4() { Show("sev"); setTimeout("Show5()", 1000); }
-function Show5() { Show("age"); setTimeout("Show6()", 1000); }
-function Show6() { Show("cond"); }
-*/
-
-// function show(id) {
-//     $(id).show();
-// 	// if(document.all) {
-// 	// 	for(var i = 0; i < document.all.length; ++i) {
-// 	// 		if(document.all[i].name == ename) {
-// 	// 			document.all[i].style.visibility ='visible';
-// 	// 		}
-// 	// 	}
-// 	// } else {
-// 	// 	var objs = document.getElementsByName(ename);
-// 	//    	for(var i = 0; i < objs.length; ++i) {
-// 	// 		objs[i].style.visibility ='visible';
-// 	// 	}
-// 	// }
-// }
-
