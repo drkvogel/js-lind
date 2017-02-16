@@ -42,12 +42,11 @@ function show5() { $(".age").visible(); setTimeout(show6, PAUSE); }
 function show4() { $(".sev").visible(); setTimeout(show5, PAUSE); }
 function show3() { $(".duration").visible(); setTimeout(show4, PAUSE); }
 function show2() { $(".heading").visible(); setTimeout(show3, PAUSE); }
-function show1a() { $("#summaryNext").show(); $("#summaryNext").visible(); setTimeout(show2, PAUSE); }
+function show1a() { $("#summaryNext").visible(); setTimeout(show2, PAUSE); }
 function show1() { setTimeout(show1a, PAUSE); }
 
 function hideNext() {
     $(".hideable").invisible();
-    $("#summaryNext").hide();       // remove from layout as well
 }
 
 function showIntro() {
