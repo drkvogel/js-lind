@@ -23,7 +23,8 @@ Originally commissioned by Sir Iain Chalmers and created by Jim Halsey and Chris
 
 ## do
 
-
+make style consistent with site, e.g. 
+http://www.jameslindlibrary.org/essays/2-2-the-need-to-compare-like-with-like-in-treatment-comparisons/
 
 ## defer
 
