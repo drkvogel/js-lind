@@ -1,4 +1,5 @@
 console.log('Ready...');
+
 var MAXSTARTRAND = 10000, MAXENDRAND = 100000;
 var PAUSE = 500;
 var nrand = 0;
@@ -14,7 +15,6 @@ $(function () {
     });
 });
 
-
 function showPage(id) {
     $(currentPage).hide();
     currentPage = id;
@@ -24,19 +24,18 @@ function showPage(id) {
 // 10 times bigger values are hidden using "visibility: hidden" which preserves the onscreen space for an element
 // as opposed to "display: none" which causes the element not to be present at all, which could break the layout
 // jQuery hide() and show() change "display", but there is no equivalent for "visibility", so here is a jQuery plugin:
-(function($) { // set visibility with visible() or invisible()
-    $.fn.invisible = function() { // fn is an alias to prototype
-        return this.each(function() {
+(function ($) { // set visibility with visible() or invisible()
+    $.fn.invisible = function () { // fn is an alias to prototype
+        return this.each(function () {
             $(this).css("visibility", "hidden");
         });
     };
-    $.fn.visible = function() {
-        return this.each(function() {
+    $.fn.visible = function () {
+        return this.each(function () {
             $(this).css("visibility", "visible");
         });
     };
 }(jQuery));
-
 
 function show6() { $(".cond").visible(); }
 function show5() { $(".age").visible(); setTimeout(show6, PAUSE); }
@@ -94,7 +93,7 @@ function Factors() {    // each strata for each factor has a tuple for a count o
         s1: [0, 0],
         s2: [0, 0]
     };
-    this.f2 =  {        // severity
+    this.f2 = {        // severity
         s1: [0, 0],
         s2: [0, 0],
         s3: [0, 0]
@@ -119,9 +118,9 @@ function Factors() {    // each strata for each factor has a tuple for a count o
 // Factor X : was a name factor with a percentage chosen by the user, now defaults to "Very anxious" (and what percentage?)
 // e.g. FACT3(2,1) is the number of patients for factor 2 (age), category 2 (15-34), on treatment A
 // possible gotchas: rand seed, 16-bit floating point rounding errors
-Factors.prototype.randomise = function(nrand) {
+Factors.prototype.randomise = function (nrand) {
     this.nrand = nrand;
-    for (var i=0; i < nrand; i++) {         // do i=1,nrand
+    for (var i = 0; i < nrand; i++) {         // do i=1,nrand
         var treatment;                      // treatment dimension?
         var randno = Math.random();         // flip a coin
         if (randno < 0.5) {                 // treatment A
@@ -132,17 +131,15 @@ Factors.prototype.randomise = function(nrand) {
             this.nrandb += 1;
         }
 
-        // simulate patient factors using random numbers instead of real data
-        // factor 1 (duration of health problem): 0.7 long-term; 0.3 recent
-        randno = Math.random();
+        // simulate patient factors using random numbers instead of real data        
+        randno = Math.random(); // factor 1 (duration of health problem): 0.7 long-term; 0.3 recent
         if (randno < 0.3) {
             this.f1.s1[treatment]++;
         } else {
             this.f1.s2[treatment]++;
         }
 
-        // factor 2 (severity of health problem) 0.3: mild; 0.45 moderate; 0.25: severe
-        randno = Math.random();
+        randno = Math.random(); // factor 2 (severity of health problem) 0.3: mild; 0.45 moderate; 0.25: severe
         if (randno < 0.3) {
             this.f2.s1[treatment]++;
         } else if ((randno > 0.3) && (randno < 0.75)) {
@@ -151,8 +148,7 @@ Factors.prototype.randomise = function(nrand) {
             this.f2.s3[treatment]++;
         }
 
-        // factor 3 (age) 0.2= under 15; 0.25= 14-34 yrs; 0.25= 35-64 yrs; 0.3= 65 & older
-        randno = Math.random();
+        randno = Math.random(); // factor 3 (age) 0.2= under 15; 0.25= 14-34 yrs; 0.25= 35-64 yrs; 0.3= 65 & older
         if (randno < 0.2) {
             this.f3.s1[treatment]++;
         } else if ((randno > 0.2) && (randno < 0.45)) {
@@ -163,9 +159,8 @@ Factors.prototype.randomise = function(nrand) {
             this.f3.s4[treatment]++;
         }
 
-        // factor X (in earlier versions, was a factor chosen by the user - now defaults to "Very anxious") (default 5%?)
-        randno = Math.random();
-        if (randno < 0.05) {                // yes, default 5%
+        randno = Math.random(); // factor X (in earlier versions, chosen by user, now "Very anxious", 5%)
+        if (randno < 0.05) {
             this.f4.s1[treatment]++;
         } else {
             this.f4.s2[treatment]++;
