@@ -4,6 +4,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
+var gulpUtil = require('gulp-util')
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -54,7 +55,9 @@ gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 gulp.task('html', ['styles', 'scripts'], () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+    .pipe($.uglify().on('error', gulpUtil.log))
     .pipe($.if('*.js', $.uglify()))
+    //.pipe(ignore.exclude([ "**/*.map" ]))
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));
