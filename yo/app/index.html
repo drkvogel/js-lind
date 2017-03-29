@@ -2,40 +2,40 @@
 <html lang="">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>James Lind Library - Simple Randomisation Demonstration</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>James Lind Library - Simple Randomisation Demonstration</title>
 
-  <!--<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
-  <!-- Place favicon.ico in the root directory -->
+    <!--<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+    <!-- Place favicon.ico in the root directory -->
 
-  <!-- build:css styles/vendor.css -->
-  <!-- bower:css -->
-  <!-- endbower -->
-  <!-- endbuild -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
 
-  <!-- build:css styles/main.css -->
-  <!--<link rel="stylesheet" href="styles/main.css">-->
-  <link rel="stylesheet" href="styles/cochrane.css">
-  <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <!--<link rel="stylesheet" href="styles/main.css">-->
+    <link rel="stylesheet" href="styles/cochrane.css">
+    <!-- endbuild -->
 
 </head>
 
 <body>
-  <!--[if lt IE 10]>
+    <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-  <div class="container">
-    <div id="pages">
-      <div id="intro" class="page">
-        <table border="1" cellspacing="0" cellpadding="10" width="750" bordercolor="#003366" align="center">
-          <tbody>
-            <tr>
-              <td>
-                <table width="200" border="0" align="left" cellpadding="3">
-                  <tbody>
-<!--                     <tr>
+    <div class="container">
+        <div id="pages">
+            <div id="intro" class="page">
+                <table border="1" cellspacing="0" cellpadding="10" width="95%" bordercolor="#003366" align="center">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table width="200" border="0" align="left" cellpadding="3">
+                                    <tbody>
+                                        <!--                     <tr>
                       <td bgcolor="#EAEEF7" width="100" height="2">
                         <div align="center"><a href="http://www.jameslindlibrary.org/index.html" class="menubar">Home</a></div>
                       </td>
@@ -43,317 +43,308 @@
                         <div align="center"><a href="http://www.jameslindlibrary.org/contents.php" class="menubar">Contents</a></div>
                       </td>
                     </tr>
- -->                    <tr bgcolor="#EAEEF7">
-                      <td colspan="2" class="nav">
-                        <div align="center"><a href="http://www.jameslindlibrary.org/" class="menubar"><b><strong style="color: #003366">jameslindlibrary.org</strong></b></a></div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table border="0">
-                  <tbody>
-                    <tr>
-                      <td width="80">&nbsp;</td>
-                      <td>
-                        <h3 align="right">Allocating sufficiently large numbers of patients at random to create similar treatment comparison
-                          groups
-                        </h3>
-                      </td>
-                      <td><img src="./images/jll_logo.jpg" width="113" height="153"></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <h4>Comparing like with like</h4>
-                <p>Random allocation of patients to treatment comparison groups is one of the ways to ensure that tests of treatments
-                  are fair. Although random allocation can never ensure that treatment comparison groups are exactly comparable
-                  in all respects, it ensures that the composition of the comparison groups has not been biased by clinician
-                  or patient choices. Unless allocation bias is reduced in this way, any differences in the progress of patients
-                  in the comparison groups may simply reflect the fact that they were composed of patients who were different
-                  to begin with, and nothing to do with relative effects of different treatments.
-                </p>
-                <h4>Recorded, known patient characteristics</h4>
-                <p>Patients in the treatment comparison groups that have been generated using random allocation need to be sufficiently
-                  alike in characteristics (age, for example) which are known to influence their health problems. Reports
-                  of treatment comparisons, therefore, need to show that 'like patients' have been compared with 'other like
-                  patients'.
-                </p>
-                <h4>Unrecorded and, as yet, undiscovered patient characteristics</h4>
-                <p>Patients in treatment comparison groups who differ in respect of unrecorded and as yet undiscovered characteristics
-                  of importance obviously cannot be shown to be comparable. However, because random allocation ensures that
-                  any unrecorded differences have been due to chance, these differences can be taken into account in statistical
-                  analyses, usually by calculating confidence intervals.</p>
-                <h4>Achieving balance in important patient characteristics</h4>
-                <p>The larger the number of patients allocated at random to treatment comparison groups, the more likely it
-                  is that the comparison groups will be made up of patients with comparable characteristics, and the less
-                  likely that large imbalances will remain. You can see this effect of increasing the numbers of patients
-                  using the random allocation program below. Ask the program to randomise successively larger numbers of
-                  patients (up to 100,000) and watch the way that the characteristics of the patients in the treatment comparison
-                  groups become increasingly balanced.
-                </p>
-                <!--<form method="post" action=".">-->
-                <input type="text" id="nrandrec" name="nrandrec" value="" size="6" maxlength="6">
-                <span>Enter the number of patients to be randomised, and hit the Go button....</span>
-                <input type="submit" name="Submit" value="Go" onclick="doRand()">
-                <!--<input type="hidden" name="ftype" value="1">
+ -->
+                                        <tr bgcolor="#EAEEF7">
+                                            <td colspan="2" class="nav">
+                                                <div align="center"><a href="http://www.jameslindlibrary.org/" class="menubar"><b><strong style="color: #003366">jameslindlibrary.org</strong></b></a></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="80">&nbsp;</td>
+                                            <td>
+                                                <h3 align="right">Allocating sufficiently large numbers of patients at random to create similar treatment comparison groups
+                                                </h3>
+                                            </td>
+                                            <td><img src="./images/jll_logo.jpg" width="113" height="153"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h4>Comparing like with like</h4>
+                                <p>Random allocation of patients to treatment comparison groups is one of the ways to ensure that tests of treatments are fair. Although random allocation can never ensure that treatment comparison groups are exactly comparable
+                                    in all respects, it ensures that the composition of the comparison groups has not been biased by clinician or patient choices. Unless allocation bias is reduced in this way, any differences in the progress of patients
+                                    in the comparison groups may simply reflect the fact that they were composed of patients who were different to begin with, and nothing to do with relative effects of different treatments.
+                                </p>
+                                <h4>Recorded, known patient characteristics</h4>
+                                <p>Patients in the treatment comparison groups that have been generated using random allocation need to be sufficiently alike in characteristics (age, for example) which are known to influence their health problems. Reports
+                                    of treatment comparisons, therefore, need to show that 'like patients' have been compared with 'other like patients'.
+                                </p>
+                                <h4>Unrecorded and, as yet, undiscovered patient characteristics</h4>
+                                <p>Patients in treatment comparison groups who differ in respect of unrecorded and as yet undiscovered characteristics of importance obviously cannot be shown to be comparable. However, because random allocation ensures that
+                                    any unrecorded differences have been due to chance, these differences can be taken into account in statistical analyses, usually by calculating confidence intervals.</p>
+                                <h4>Achieving balance in important patient characteristics</h4>
+                                <p>The larger the number of patients allocated at random to treatment comparison groups, the more likely it is that the comparison groups will be made up of patients with comparable characteristics, and the less likely that
+                                    large imbalances will remain. You can see this effect of increasing the numbers of patients using the random allocation program below. Ask the program to randomise successively larger numbers of patients (up to 100,000)
+                                    and watch the way that the characteristics of the patients in the treatment comparison groups become increasingly balanced.
+                                </p>
+                                <!--<form method="post" action=".">-->
+                                <input type="text" id="nrandrec" name="nrandrec" value="" size="6" maxlength="6">
+                                <span>Enter the number of patients to be randomised, and hit the Go button:</span>
+                                <input type="submit" name="Submit" value="Go" onclick="doRand()">
+                                <!--<input type="hidden" name="ftype" value="1">
                             <input type="hidden" name="power" value="0">
                             <input type="submit" name="Submit" value="Go">-->
-                <!--</form>-->
-                <p>&nbsp;</p>
-                <p>&nbsp; </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div> <!-- intro -->
-
-      <div id="results" class="page" style="display:none">
-        <table border="1" cellspacing="0" cellpadding="10" width="750" bordercolor="#003366" align="center">
-          <tbody>
-            <tr>
-              <td>
-                <table width="100%">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <table width="200" border="0" align="left" cellpadding="3">
-                          <tbody>
-<!--                             <tr>
-                              <td bgcolor="#EAEEF7" width="100" height="2">
-                                <div align="center"><a href="http://www.jameslindlibrary.org/index.html" class="menubar">Home</a></div>
-                              </td>
-                              <td bgcolor="#EAEEF7" height="2" width="100">
-                                <div align="center"><a href="http://www.jameslindlibrary.org/contents.php" class="menubar">Contents</a></div>
-                              </td>
-                            </tr>
- -->                            <tr bgcolor="#EAEEF7">
-                              <td colspan="2" class="nav">
-                                <div align="center"><a href="http://www.jameslindlibrary.org/" class="menubar"><b><font color="#003366">jameslindlibrary.org</font></b></a></div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table><br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td id="summary">
-                        <h4 align="center"><span id="nrand"></span> patients were randomised,<br>
-                        <span id="treatA"></span> to treatment A, <span id="treatB"></span> to treatment B:</h4>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td id="summaryNext" class="hideable">
-                        <div align="center"><span id="nrandNext"></span> patients were randomised,<br>
-                        <span id="treatANext"></span> to treatment A, <span id="treatBNext"></span> to treatment B:</div>
-                      </td>
-                    </tr>
-                  </tbody>
+                                <!--</form>-->
+                                <p>&nbsp;</p>
+                                <p>&nbsp; </p>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-                <table width="80%" align="center" border="0">
-                  <tbody>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td align="right">Treatment A</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td align="right">Treatment B</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td align="right">total: <span id="totalA"></span></td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="heading hideable" style="visibility:hidden"><span id="totalANext"></span></td>
-                      <td>&nbsp;</td>
-                      <td align="right">total: <span id="totalB"></span></td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="heading hideable" style="visibility:hidden"><span id="totalBNext"></span></td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td align="right">number (%)</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td align="right">number (%)</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="10">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"><b>Duration of health problem</b></td>
-                      <td colspan="8">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>Long term</td>
-                      <td align="right"><span id="f1s1t0"></span> (<span id="f1s1t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="duration hideable" style="visibility:hidden"> <span id="f1s1t0next"></span> (<span id="f1s1t0nextpc"></span>) </td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f1s1t1"></span> (<span id="f1s1t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="duration hideable" style="visibility:hidden"><span id="f1s1t1next"></span> (<span id="f1s1t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>More recent</td>
-                      <td align="right"><span id="f1s2t0"></span> (<span id="f1s2t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="duration hideable" style="visibility:hidden"><span id="f1s2t0next"></span> (<span id="f1s2t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f1s2t1"></span> (<span id="f1s2t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="duration hideable" style="visibility:hidden"><span id="f1s2t1next"></span> (<span id="f1s2t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="10">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"><b>Severity of health problem</b></td>
-                      <td colspan="8">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>Mild</td>
-                      <td align="right"><span id="f2s1t0"></span> (<span id="f2s1t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden" ><span id="f2s1t0next"></span> (<span id="f2s1t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f2s1t1"></span> (<span id="f2s1t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s1t1next"></span> (<span id="f2s1t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>Moderate</td>
-                      <td align="right"><span id="f2s2t0"></span> (<span id="f2s2t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s2t0next"></span> (<span id="f2s2t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f2s2t1"></span> (<span id="f2s2t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s2t1next"></span> (<span id="f2s2t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>Severe</td>
-                      <td align="right"><span id="f2s3t0"></span> (<span id="f2s3t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden"> <span id="f2s3t0next"></span> (<span id="f2s3t0nextpc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                      <td align="right"><span id="f2s3t1"></span> (<span id="f2s3t1pc"></span>)</td>
-                      <td name="n_sev_b3">&nbsp;</td>
-                      <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s3t1next"></span> (<span id="f2s3t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="10">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"><b>Age, in years</b></td>
-                      <td colspan="8">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>Under 15</td>
-                      <td align="right"><span id="f3s1t0"></span> (<span id="f3s1t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden"> <span id="f3s1t0next"></span> (<span id="f3s1t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f3s1t1"></span> (<span id="f3s1t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden"><span id="f3s1t1next"></span> (<span id="f3s1t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>15-34</td>
-                      <td align="right"><span id="f3s2t0"></span> (<span id="f3s2t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden"> <span id="f3s2t0next"></span> (<span id="f3s2t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f3s2t1"></span> (<span id="f3s2t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden"><span id="f3s2t1next"></span> (<span id="f3s2t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>35-64</td>
-                      <td align="right"><span id="f3s3t0"></span> (<span id="f3s3t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden"> <span id="f3s3t0next"></span> (<span id="f3s3t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f3s3t1"></span> (<span id="f3s3t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden"><span id="f3s3t1next"></span> (<span id="f3s3t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>65 &amp; older</td>
-                      <td align="right"><span id="f3s4t0"></span> (<span id="f3s4t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden"> <span id="f3s4t0next"></span> (<span id="f3s4t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f3s4t1"></span> (<span id="f3s4t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="age hideable" style="visibility:hidden"><span id="f3s4t1next"></span> (<span id="f3s4t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="10">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"><b>Condition: Very anxious?</b></td>
-                      <td colspan="8">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>Yes</td>
-                      <td align="right"><span id="f4s1t0"></span> (<span id="f4s1t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="cond hideable" style="visibility:hidden"> <span id="f4s1t0next"></span> (<span id="f4s1t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f4s1t1"></span> (<span id="f4s1t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="cond hideable" style="visibility:hidden"><span id="f4s1t1next"></span> (<span id="f4s1t1nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td>No</td>
-                      <td align="right"><span id="f4s2t0"></span> (<span id="f4s2t0pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="cond hideable" style="visibility:hidden"> <span id="f4s2t0next"></span> (<span id="f4s2t0nextpc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right"><span id="f4s2t1"></span> (<span id="f4s2t1pc"></span>)</td>
-                      <td>&nbsp;</td>
-                      <td align="right" class="cond hideable" style="visibility:hidden"><span id="f4s2t1next"></span> (<span id="f4s2t1nextpc"></span>)</td>
-                      <td align="right">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="10">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td colspan="9" align="center">
-                        <div align="center"><input type="submit" name="bigger" onclick="makeBigger()" value="Make 10 times bigger" /></div>
-<!--                         <form name="form1">
+            </div>
+            <!-- intro -->
+
+            <div id="results" class="page" style="display:none">
+                <table border="1" cellspacing="0" cellpadding="10" width="95%" bordercolor="#003366" align="center">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table width="200" border="0" align="left" cellpadding="3">
+                                                    <tbody>
+                                                        <!--<tr>
+                                                            <td bgcolor="#EAEEF7" width="100" height="2">
+                                                                <div align="center"><a href="http://www.jameslindlibrary.org/index.html" class="menubar">Home</a></div>
+                                                            </td>
+                                                            <td bgcolor="#EAEEF7" height="2" width="100">
+                                                                <div align="center"><a href="http://www.jameslindlibrary.org/contents.php" class="menubar">Contents</a></div>
+                                                            </td>
+                                                        </tr>-->
+                                                        <tr bgcolor="#EAEEF7">
+                                                            <td colspan="2" class="nav">
+                                                                <div align="center"><b><font color="#003366">jameslindlibrary.org</font></b></div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="summary">
+                                                <h4 align="center"><span id="nrand"></span> patients were randomised,<br>
+                                                    <span id="treatA"></span> to treatment A, <span id="treatB"></span> to treatment B:</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="summaryNext" class="hideable">
+                                                <div align="center"><span id="nrandNext"></span> patients were randomised,<br>
+                                                    <span id="treatANext"></span> to treatment A, <span id="treatBNext"></span> to treatment B:</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="80%" align="center" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right">Treatment A</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right">Treatment B</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right">total: <span id="totalA"></span></td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="heading hideable" style="visibility:hidden"><span id="totalANext"></span></td>
+                                            <td>&nbsp;</td>
+                                            <td align="right">total: <span id="totalB"></span></td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="heading hideable" style="visibility:hidden"><span id="totalBNext"></span></td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right">number (%)</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right">number (%)</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="10">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><b>Duration of health problem</b></td>
+                                            <td colspan="8">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Long term</td>
+                                            <td align="right"><span id="f1s1t0"></span> (<span id="f1s1t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="duration hideable" style="visibility:hidden"> <span id="f1s1t0next"></span> (<span id="f1s1t0nextpc"></span>) </td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f1s1t1"></span> (<span id="f1s1t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="duration hideable" style="visibility:hidden"><span id="f1s1t1next"></span> (<span id="f1s1t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>More recent</td>
+                                            <td align="right"><span id="f1s2t0"></span> (<span id="f1s2t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="duration hideable" style="visibility:hidden"><span id="f1s2t0next"></span> (<span id="f1s2t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f1s2t1"></span> (<span id="f1s2t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="duration hideable" style="visibility:hidden"><span id="f1s2t1next"></span> (<span id="f1s2t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="10">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><b>Severity of health problem</b></td>
+                                            <td colspan="8">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Mild</td>
+                                            <td align="right"><span id="f2s1t0"></span> (<span id="f2s1t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s1t0next"></span> (<span id="f2s1t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f2s1t1"></span> (<span id="f2s1t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s1t1next"></span> (<span id="f2s1t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Moderate</td>
+                                            <td align="right"><span id="f2s2t0"></span> (<span id="f2s2t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s2t0next"></span> (<span id="f2s2t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f2s2t1"></span> (<span id="f2s2t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s2t1next"></span> (<span id="f2s2t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Severe</td>
+                                            <td align="right"><span id="f2s3t0"></span> (<span id="f2s3t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="sev hideable" style="visibility:hidden"> <span id="f2s3t0next"></span> (<span id="f2s3t0nextpc"></span>)</td>
+                                            <td align="right">&nbsp;</td>
+                                            <td align="right"><span id="f2s3t1"></span> (<span id="f2s3t1pc"></span>)</td>
+                                            <td name="n_sev_b3">&nbsp;</td>
+                                            <td align="right" class="sev hideable" style="visibility:hidden"><span id="f2s3t1next"></span> (<span id="f2s3t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="10">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><b>Age, in years</b></td>
+                                            <td colspan="8">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Under 15</td>
+                                            <td align="right"><span id="f3s1t0"></span> (<span id="f3s1t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="age hideable" style="visibility:hidden"> <span id="f3s1t0next"></span> (<span id="f3s1t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f3s1t1"></span> (<span id="f3s1t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="age hideable" style="visibility:hidden"><span id="f3s1t1next"></span> (<span id="f3s1t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>15-34</td>
+                                            <td align="right"><span id="f3s2t0"></span> (<span id="f3s2t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="age hideable" style="visibility:hidden"> <span id="f3s2t0next"></span> (<span id="f3s2t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f3s2t1"></span> (<span id="f3s2t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="age hideable" style="visibility:hidden"><span id="f3s2t1next"></span> (<span id="f3s2t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>35-64</td>
+                                            <td align="right"><span id="f3s3t0"></span> (<span id="f3s3t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="age hideable" style="visibility:hidden"> <span id="f3s3t0next"></span> (<span id="f3s3t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f3s3t1"></span> (<span id="f3s3t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="age hideable" style="visibility:hidden"><span id="f3s3t1next"></span> (<span id="f3s3t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>65 &amp; older</td>
+                                            <td align="right"><span id="f3s4t0"></span> (<span id="f3s4t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="age hideable" style="visibility:hidden"> <span id="f3s4t0next"></span> (<span id="f3s4t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f3s4t1"></span> (<span id="f3s4t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="age hideable" style="visibility:hidden"><span id="f3s4t1next"></span> (<span id="f3s4t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="10">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><b>Condition: Very anxious?</b></td>
+                                            <td colspan="8">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Yes</td>
+                                            <td align="right"><span id="f4s1t0"></span> (<span id="f4s1t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="cond hideable" style="visibility:hidden"> <span id="f4s1t0next"></span> (<span id="f4s1t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f4s1t1"></span> (<span id="f4s1t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="cond hideable" style="visibility:hidden"><span id="f4s1t1next"></span> (<span id="f4s1t1nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>No</td>
+                                            <td align="right"><span id="f4s2t0"></span> (<span id="f4s2t0pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="cond hideable" style="visibility:hidden"> <span id="f4s2t0next"></span> (<span id="f4s2t0nextpc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right"><span id="f4s2t1"></span> (<span id="f4s2t1pc"></span>)</td>
+                                            <td>&nbsp;</td>
+                                            <td align="right" class="cond hideable" style="visibility:hidden"><span id="f4s2t1next"></span> (<span id="f4s2t1nextpc"></span>)</td>
+                                            <td align="right">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="10">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td colspan="9" align="center">
+                                                <div align="center"><input type="submit" name="bigger" onclick="makeBigger()" value="Make 10 times bigger" /></div>
+                                                <!--                         <form name="form1">
                           <div align="center">
                             <input type="hidden" name="seed" value="15">
                             <input type="hidden" name="ftype" value="1">
@@ -365,47 +356,50 @@
                             <input type="submit" name="Submit" value="Make 10 times bigger">
                           </div>
                         </form> -->
-                      </td>
-                    </tr>
-                  </tbody>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p></p>
+                                <p></p>
+                                <p><a href="#" onclick="showIntro()">&lt;&lt;&lt; Back to beginning</a></p>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-                <p></p>
-                <p></p>
-                <p><a href="#" onclick="showIntro()">&lt;&lt;&lt; Back to beginning</a></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div> <!-- results -->
+            </div>
+            <!-- results -->
 
 
-    </div> <!-- pages -->
-  </div> <!-- container -->
+        </div>
+        <!-- pages -->
+    </div>
+    <!-- container -->
 
-  <!-- build:js scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
-  <!-- build:js scripts/plugins.js -->
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-  <!-- endbuild -->
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <!-- endbuild -->
 
-  <!-- build:js scripts/main.js -->
-  <script src="scripts/main.js"></script>
-  <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
 </body>
 
 </html>
