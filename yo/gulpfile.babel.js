@@ -3,12 +3,10 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
-<<<<<<< HEAD
-import {stream as wiredep} from 'wiredep';
-var gulpUtil = require('gulp-util')
-=======
 import { stream as wiredep } from 'wiredep';
->>>>>>> c32915ed4bc2006b00c139fae63a011f8b43abb6
+import ignore from 'gulp-ignore';
+//var gulpUtil = require('gulp-util'); // es5
+import gulpUtil from 'gulp-util';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -56,14 +54,46 @@ const testLintOptions = {
 gulp.task('lint', lint('app/scripts/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
+// http://stackoverflow.com/a/42552148/535071 ?
+var ifConditionJS = function(file) {
+    if (file.extname == '.js') return true;
+};
+
+var ifConditionCSS = function(file) {
+    if (file.extname == '.css') return true;
+};
+
+var ifConditionHTML = function(file) {
+    if (file.extname == '.html') {
+        console.log('ifConditionHTML: true');
+        return true;
+    } else {
+        console.log('ifConditionHTML: false');
+        //console.log('file: ' + JSON.stringify(file));
+        // for what I guess is the HTML file, all of these return 'undefined':
+        console.log('basename: ' + file.basename);
+        console.log('dirname: ' + file.dirname);
+        console.log('posix: ' + file.posix);
+        console.log('file.extname: ' + file.extname);
+        return false;
+    }
+};
+
 gulp.task('html', ['styles', 'scripts'], () => {
     return gulp.src('app/*.html')
         .pipe($.useref({ searchPath: ['.tmp', 'app', '.'] }))
-        .pipe($.uglify().on('error', gulpUtil.log))
-        .pipe($.if('*.js', $.uglify()))
-        //.pipe(ignore.exclude([ "**/*.map" ]))
-        .pipe($.if('*.css', $.cssnano()))
-        .pipe($.if('*.html', $.htmlmin({ collapseWhitespace: true })))
+        .pipe($.ignore.exclude([ "**/*.map" ]))
+        // .pipe(ignore.exclude([ "**/*.map" ]))
+        //.pipe($.if(ifConditionJS, $.uglify()))
+        //.pipe($.if(ifConditionJS, $.uglify()))
+        // .pipe($.if('*.css', $.cssnano()))
+        // .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+        //.pipe($.if('*.js', $.uglify().on('error', gulpUtil.log)))
+        .pipe($.if(ifConditionJS, $.uglify().on('error', gulpUtil.log)))
+        // .pipe($.if('*.css', $.cssnano().on('error', gulpUtil.log)))
+        .pipe($.if(ifConditionCSS, $.cssnano().on('error', gulpUtil.log)))
+        //.pipe($.if('*.html', $.htmlmin({ collapseWhitespace: true }).on('error', gulpUtil.log)))
+        .pipe($.if(ifConditionHTML, $.htmlmin({ collapseWhitespace: true }).on('error', gulpUtil.log))) // doesn't work?
         .pipe(gulp.dest('dist'));
 });
 
