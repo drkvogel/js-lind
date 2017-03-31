@@ -7,7 +7,6 @@ import { stream as wiredep } from 'wiredep';
 import ignore from 'gulp-ignore';
 import gulpUtil from 'gulp-util'; //var gulpUtil = require('gulp-util'); // es5
 
-var gulpUtil = require('gulp-util')
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -96,7 +95,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
         // .pipe($.if('*.css', $.cssnano().on('error', gulpUtil.log)))
         .pipe($.if(ifConditionCSS, $.cssnano().on('error', gulpUtil.log)))
         //.pipe($.if('*.html', $.htmlmin({ collapseWhitespace: true }).on('error', gulpUtil.log)))
-        .pipe($.if(ifConditionHTML, $.htmlmin({ collapseWhitespace: true }).on('error', gulpUtil.log))) // doesn't work?
+        //.pipe($.if(ifConditionHTML, $.htmlmin({ collapseWhitespace: true }).on('error', gulpUtil.log))) // doesn't work?
         .pipe(gulp.dest('dist'));
 });
 
