@@ -3,13 +3,9 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
-<<<<<<< HEAD
-import {stream as wiredep} from 'wiredep';
-var gulpUtil = require('gulp-util')
-=======
 import { stream as wiredep } from 'wiredep';
->>>>>>> c32915ed4bc2006b00c139fae63a011f8b43abb6
 
+var gulpUtil = require('gulp-util')
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
