@@ -64,8 +64,10 @@ var ifConditionCSS = function(file) {
 };
 
 var ifConditionHTML = function(file) {
-    if (file.extname == '.html') {
-        console.log('ifConditionHTML: true');
+    //if (file.extname == '.html') {
+    if (file.extname === undefined) {
+        //console.log('ifConditionHTML: true');
+        console.log('file.extname === undefined, assuming html...');
         return true;
     } else {
         console.log('ifConditionHTML: false');
