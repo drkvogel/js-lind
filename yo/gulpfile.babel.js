@@ -71,7 +71,7 @@ var ifConditionHTML = function(file) {
         return true;
     } else {
         console.log('ifConditionHTML: false');
-        //console.log('file: ' + JSON.stringify(file));
+        //console.log('file: ' + JSON.stringify(file)); // big
         // for what I guess is the HTML file, all of these return 'undefined':
         console.log('basename: ' + file.basename);
         console.log('dirname: ' + file.dirname);
@@ -92,6 +92,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
         // .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
         //.pipe($.if('*.js', $.uglify().on('error', gulpUtil.log)))
         .pipe($.if(ifConditionJS, $.uglify().on('error', gulpUtil.log)))
+        //.pipe($.if(/\.js$/, $.uglify().on('error', gulpUtil.log)))
         // .pipe($.if('*.css', $.cssnano().on('error', gulpUtil.log)))
         .pipe($.if(ifConditionCSS, $.cssnano().on('error', gulpUtil.log)))
         //.pipe($.if('*.html', $.htmlmin({ collapseWhitespace: true }).on('error', gulpUtil.log)))
